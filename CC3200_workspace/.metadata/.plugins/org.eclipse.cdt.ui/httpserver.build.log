@@ -1,0 +1,80 @@
+
+**** Build of configuration Release for project httpserver ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/gpio_if.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=fpalib --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/oslib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --define=ccs --define=cc3200 --define=USE_FREERTOS --define=SL_PLATFORM_MULTI_THREADED --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="gpio_if.pp"  "C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/gpio_if.c"
+'Finished building: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/gpio_if.c'
+' '
+'Building file: ../main.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=fpalib --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/oslib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --define=ccs --define=cc3200 --define=USE_FREERTOS --define=SL_PLATFORM_MULTI_THREADED --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="main.pp"  "../main.c"
+'Finished building: ../main.c'
+' '
+'Building file: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/network_common.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=fpalib --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/oslib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --define=ccs --define=cc3200 --define=USE_FREERTOS --define=SL_PLATFORM_MULTI_THREADED --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="network_common.pp"  "C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/network_common.c"
+'Finished building: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/network_common.c'
+' '
+'Building file: ../pinmux.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=fpalib --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/oslib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --define=ccs --define=cc3200 --define=USE_FREERTOS --define=SL_PLATFORM_MULTI_THREADED --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="pinmux.pp"  "../pinmux.c"
+'Finished building: ../pinmux.c'
+' '
+'Building file: ../smartconfig.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=fpalib --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/oslib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --define=ccs --define=cc3200 --define=USE_FREERTOS --define=SL_PLATFORM_MULTI_THREADED --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="smartconfig.pp"  "../smartconfig.c"
+'Finished building: ../smartconfig.c'
+' '
+'Building file: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/startup_ccs.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=fpalib --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/oslib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --define=ccs --define=cc3200 --define=USE_FREERTOS --define=SL_PLATFORM_MULTI_THREADED --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="startup_ccs.pp"  "C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/startup_ccs.c"
+'Finished building: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/startup_ccs.c'
+' '
+'Building file: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/uart_if.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=fpalib --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/oslib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --define=ccs --define=cc3200 --define=USE_FREERTOS --define=SL_PLATFORM_MULTI_THREADED --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="uart_if.pp"  "C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/uart_if.c"
+'Finished building: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/uart_if.c'
+' '
+'Building target: httpserver.out'
+'Invoking: ARM Linker'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=fpalib --abi=eabi -me -g --define=ccs --define=cc3200 --define=USE_FREERTOS --define=SL_PLATFORM_MULTI_THREADED --diag_wrap=off --diag_warning=225 --display_error_number -z -m"httpserver.map" --heap_size=0x8000 --stack_size=0x800 -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" -i"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib/ccs/Release" -i"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/ccs/OS" -i"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/oslib/ccs/free_rtos" --reread_libs --display_error_number --diag_wrap=off --warn_sections --xml_link_info="httpserver_linkInfo.xml" --rom_model -o "httpserver.out" "./gpio_if.obj" "./main.obj" "./network_common.obj" "./pinmux.obj" "./smartconfig.obj" "./startup_ccs.obj" "./uart_if.obj" "../cc3200v1p32.cmd"  -l"libc.a" -lsimplelink.a -ldriverlib.a -lfree_rtos.a 
+<Linking>
+error #10008-D: cannot find file "simplelink.a"
+error #10008-D: cannot find file "free_rtos.a"
+
+ undefined                      first referenced 
+  symbol                            in file      
+ ---------                      ---------------- 
+ VStartSimpleLinkSpawnTask      ./main.obj       
+ g_pfnVectors                   ./main.obj       
+ osi_InterruptRegister          ./gpio_if.obj    
+ osi_Sleep                      ./main.obj       
+ osi_TaskCreate                 ./main.obj       
+ osi_start                      ./main.obj       
+ sl_DevGet                      ./main.obj       
+ sl_NetAppMDNSUnRegisterService ./main.obj       
+ sl_NetAppStart                 ./main.obj       
+ sl_NetAppStop                  ./main.obj       
+ sl_NetCfgSet                   ./main.obj       
+ sl_Start                       ./main.obj       
+ sl_Stop                        ./main.obj       
+ sl_WlanDisconnect              ./main.obj       
+ sl_WlanGet                     ./main.obj       
+ sl_WlanPolicySet               ./main.obj       
+ sl_WlanProfileDel              ./main.obj       
+ sl_WlanRxFilterSet             ./main.obj       
+ sl_WlanSet                     ./main.obj       
+ sl_WlanSetMode                 ./main.obj       
+ sl_WlanSmartConfigStart        ./smartconfig.obj
+ sl_WlanSmartConfigStop         ./smartconfig.obj
+
+error #10234-D: unresolved symbols remain
+error #10010: errors encountered during linking; "httpserver.out" not built
+
+>> Compilation failure
+gmake: *** [httpserver.out] Error 1
+gmake: Target `all' not remade because of errors.
+
+**** Build Finished ****

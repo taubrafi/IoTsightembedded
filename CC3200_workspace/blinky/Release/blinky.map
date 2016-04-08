@@ -1,0 +1,269 @@
+******************************************************************************
+                  TI ARM Linker PC v5.2.5                      
+******************************************************************************
+>> Linked Thu Apr 07 04:28:13 2016
+
+OUTPUT FILE NAME:   <blinky.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 200046f9
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  SRAM_CODE             20004000   00019000  000007cc  00018834  RW X
+  SRAM_DATA             2001d000   00023000  00000837  000227c9  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+20004000    20004000    000007d0   000007d0    r-x
+  20004000    20004000    00000784   00000784    r-x .text
+  20004788    20004788    00000048   00000048    r-- .cinit
+2001d000    2001d000    00000037   00000000    rw-
+  2001d000    2001d000    00000034   00000000    rw- .data
+  2001d034    2001d034    00000003   00000000    rw- .bss
+2003f800    2003f800    00000800   00000000    rw-
+  2003f800    2003f800    00000800   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.init_array 
+*          0    20004000    00000000     UNINITIALIZED
+
+.text      0    20004000    00000784     
+                  20004000    0000039c     gpio_if.obj (.text)
+                  2000439c    0000009c     rtsv7M4_T_le_eabi.lib : memcpy_t2.obj (.text)
+                  20004438    00000090     main.obj (.text)
+                  200044c8    0000007a     rtsv7M4_T_le_eabi.lib : memset_t2.obj (.text)
+                  20004542    00000002     --HOLE-- [fill = 0]
+                  20004544    0000006c                           : autoinit.obj (.text)
+                  200045b0    0000006a                           : copy_decompress_rle.obj (.text)
+                  2000461a    00000002     --HOLE-- [fill = 0]
+                  2000461c    0000004c     pinmux.obj (.text)
+                  20004668    0000004c     rtsv7M4_T_le_eabi.lib : cpy_tbl.obj (.text)
+                  200046b4    00000044                           : exit.obj (.text)
+                  200046f8    0000003c                           : boot.obj (.text)
+                  20004734    00000018                           : args_main.obj (.text)
+                  2000474c    00000014                           : _lock.obj (.text)
+                  20004760    0000000e                           : copy_decompress_none.obj (.text:decompress:none)
+                  2000476e    0000000c                           : copy_zero_init.obj (.text:decompress:ZI)
+                  2000477a    00000006                           : copy_decompress_rle.obj (.text:decompress:rle24)
+                  20004780    00000004                           : pre_init.obj (.text)
+
+.cinit     0    20004788    00000048     
+                  20004788    0000001d     (.cinit..data.load) [load image, compression = rle]
+                  200047a5    00000003     --HOLE-- [fill = 0]
+                  200047a8    0000000c     (__TI_handler_table)
+                  200047b4    00000004     --HOLE-- [fill = 0]
+                  200047b8    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  200047c0    00000010     (__TI_cinit_table)
+
+.data      0    2001d000    00000034     UNINITIALIZED
+                  2001d000    00000020     gpio_if.obj (.data)
+                  2001d020    00000008     rtsv7M4_T_le_eabi.lib : _lock.obj (.data)
+                  2001d028    00000008                           : exit.obj (.data)
+                  2001d030    00000004                           : stkdepth_vars.obj (.data)
+
+.bss       0    2001d034    00000003     UNINITIALIZED
+                  2001d034    00000001     (.common:g_ucLED1Pin)
+                  2001d035    00000001     (.common:g_ucLED2Pin)
+                  2001d036    00000001     (.common:g_ucLED3Pin)
+
+.TI.persistent 
+*          0    2001d000    00000000     UNINITIALIZED
+
+.TI.noinit 
+*          0    2001d034    00000000     UNINITIALIZED
+
+.stack     0    2003f800    00000800     UNINITIALIZED
+                  2003f800    00000800     --HOLE--
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 200047c0 records: 2, size/record: 8, table size: 16
+	.data: load addr=20004788, load size=0000001d bytes, run addr=2001d000, run size=00000034 bytes, compression=rle
+	.bss: load addr=200047b8, load size=00000008 bytes, run addr=2001d034, run size=00000003 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 200047a8 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                       
+-------   ----                       
+200046b5  C$$EXIT                    
+UNDEFED   GPIODirModeSet             
+UNDEFED   GPIOIntClear               
+UNDEFED   GPIOIntEnable              
+UNDEFED   GPIOIntRegister            
+UNDEFED   GPIOIntTypeSet             
+UNDEFED   GPIOPinRead                
+UNDEFED   GPIOPinWrite               
+200042c1  GPIO_IF_ConfigureNIntEnable
+2000434d  GPIO_IF_Get                
+2000427b  GPIO_IF_GetPortNPin        
+2000403d  GPIO_IF_LedConfigure       
+2000412f  GPIO_IF_LedOff             
+2000407b  GPIO_IF_LedOn              
+200041e3  GPIO_IF_LedStatus          
+2000424d  GPIO_IF_LedToggle          
+20004309  GPIO_IF_Set                
+UNDEFED   IntEnable                  
+UNDEFED   IntMasterEnable            
+UNDEFED   IntPrioritySet             
+UNDEFED   IntVTableBaseSet           
+20004439  LEDBlinkyRoutine           
+UNDEFED   PRCMCC3200MCUInit          
+UNDEFED   PRCMPeripheralClkEnable    
+2000461d  PinMuxConfig               
+UNDEFED   PinTypeGPIO                
+UNDEFED   SHT$$INIT_ARRAY$$Base      
+UNDEFED   SHT$$INIT_ARRAY$$Limit     
+UNDEFED   UtilsDelay                 
+20040000  __STACK_END                
+00000800  __STACK_SIZE               
+200047c0  __TI_CINIT_Base            
+200047d0  __TI_CINIT_Limit           
+200047a8  __TI_Handler_Table_Base    
+200047b4  __TI_Handler_Table_Limit   
+20004545  __TI_auto_init             
+2001d028  __TI_cleanup_ptr           
+20004761  __TI_decompress_none       
+2000477b  __TI_decompress_rle24      
+2001d02c  __TI_dtors_ptr             
+20004788  __TI_static_base__         
+2000476f  __TI_zero_init             
+200044c9  __aeabi_memclr             
+200044c9  __aeabi_memclr4            
+200044c9  __aeabi_memclr8            
+2000439d  __aeabi_memcpy             
+2000439d  __aeabi_memcpy4            
+2000439d  __aeabi_memcpy8            
+200044cb  __aeabi_memset             
+200044cb  __aeabi_memset4            
+200044cb  __aeabi_memset8            
+ffffffff  __binit__                  
+ffffffff  __c_args__                 
+2003f800  __stack                    
+20004735  _args_main                 
+200046f9  _c_int00                   
+2001d020  _lock                      
+2000475b  _nop                       
+20004753  _register_lock             
+2000474d  _register_unlock           
+20004781  _system_pre_init           
+2001d024  _unlock                    
+200046b9  abort                      
+ffffffff  binit                      
+20004669  copy_in                    
+200046c1  exit                       
+UNDEFED   g_pfnVectors               
+2001d034  g_ucLED1Pin                
+2001d035  g_ucLED2Pin                
+2001d036  g_ucLED3Pin                
+2001d014  g_uiLED1Port               
+2001d018  g_uiLED2Port               
+2001d01c  g_uiLED3Port               
+200044a3  main                       
+2001d030  main_func_sp               
+2000439d  memcpy                     
+200044d1  memset                     
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                       
+-------   ----                       
+00000800  __STACK_SIZE               
+2000403d  GPIO_IF_LedConfigure       
+2000407b  GPIO_IF_LedOn              
+2000412f  GPIO_IF_LedOff             
+200041e3  GPIO_IF_LedStatus          
+2000424d  GPIO_IF_LedToggle          
+2000427b  GPIO_IF_GetPortNPin        
+200042c1  GPIO_IF_ConfigureNIntEnable
+20004309  GPIO_IF_Set                
+2000434d  GPIO_IF_Get                
+2000439d  __aeabi_memcpy             
+2000439d  __aeabi_memcpy4            
+2000439d  __aeabi_memcpy8            
+2000439d  memcpy                     
+20004439  LEDBlinkyRoutine           
+200044a3  main                       
+200044c9  __aeabi_memclr             
+200044c9  __aeabi_memclr4            
+200044c9  __aeabi_memclr8            
+200044cb  __aeabi_memset             
+200044cb  __aeabi_memset4            
+200044cb  __aeabi_memset8            
+200044d1  memset                     
+20004545  __TI_auto_init             
+2000461d  PinMuxConfig               
+20004669  copy_in                    
+200046b5  C$$EXIT                    
+200046b9  abort                      
+200046c1  exit                       
+200046f9  _c_int00                   
+20004735  _args_main                 
+2000474d  _register_unlock           
+20004753  _register_lock             
+2000475b  _nop                       
+20004761  __TI_decompress_none       
+2000476f  __TI_zero_init             
+2000477b  __TI_decompress_rle24      
+20004781  _system_pre_init           
+20004788  __TI_static_base__         
+200047a8  __TI_Handler_Table_Base    
+200047b4  __TI_Handler_Table_Limit   
+200047c0  __TI_CINIT_Base            
+200047d0  __TI_CINIT_Limit           
+2001d014  g_uiLED1Port               
+2001d018  g_uiLED2Port               
+2001d01c  g_uiLED3Port               
+2001d020  _lock                      
+2001d024  _unlock                    
+2001d028  __TI_cleanup_ptr           
+2001d02c  __TI_dtors_ptr             
+2001d030  main_func_sp               
+2001d034  g_ucLED1Pin                
+2001d035  g_ucLED2Pin                
+2001d036  g_ucLED3Pin                
+2003f800  __stack                    
+20040000  __STACK_END                
+ffffffff  __binit__                  
+ffffffff  __c_args__                 
+ffffffff  binit                      
+UNDEFED   GPIODirModeSet             
+UNDEFED   GPIOIntClear               
+UNDEFED   GPIOIntEnable              
+UNDEFED   GPIOIntRegister            
+UNDEFED   GPIOIntTypeSet             
+UNDEFED   GPIOPinRead                
+UNDEFED   GPIOPinWrite               
+UNDEFED   IntEnable                  
+UNDEFED   IntMasterEnable            
+UNDEFED   IntPrioritySet             
+UNDEFED   IntVTableBaseSet           
+UNDEFED   PRCMCC3200MCUInit          
+UNDEFED   PRCMPeripheralClkEnable    
+UNDEFED   PinTypeGPIO                
+UNDEFED   SHT$$INIT_ARRAY$$Base      
+UNDEFED   SHT$$INIT_ARRAY$$Limit     
+UNDEFED   UtilsDelay                 
+UNDEFED   g_pfnVectors               
+
+[77 symbols]

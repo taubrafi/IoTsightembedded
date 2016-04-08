@@ -1,0 +1,42 @@
+
+**** Build of configuration Release for project sdhost ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../main.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/third_party/fatfs/src" -g --gcc --define=ccs --define=cc3200 --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="main.pp"  "../main.c"
+'Finished building: ../main.c'
+' '
+'Building file: ../pinmux.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/third_party/fatfs/src" -g --gcc --define=ccs --define=cc3200 --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="pinmux.pp"  "../pinmux.c"
+'Finished building: ../pinmux.c'
+' '
+'Building file: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/startup_ccs.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/third_party/fatfs/src" -g --gcc --define=ccs --define=cc3200 --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="startup_ccs.pp"  "C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/startup_ccs.c"
+'Finished building: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/startup_ccs.c'
+' '
+'Building file: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/uart_if.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/third_party/fatfs/src" -g --gcc --define=ccs --define=cc3200 --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="uart_if.pp"  "C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/uart_if.c"
+'Finished building: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/uart_if.c'
+' '
+'Building target: sdhost.out'
+'Invoking: ARM Linker'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me -g --gcc --define=ccs --define=cc3200 --diag_wrap=off --diag_warning=225 --display_error_number -z -m"sdhost.map" --heap_size=0x800 --stack_size=0x1000 -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --reread_libs --display_error_number --diag_wrap=off --warn_sections --xml_link_info="sdhost_linkInfo.xml" --rom_model -o "sdhost.out" "./main.obj" "./pinmux.obj" "./startup_ccs.obj" "./uart_if.obj" "../cc3200v1p32.cmd"  -l"libc.a" -l"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/sdhost/ccs/../../../driverlib/ccs/Release/driverlib.a" 
+<Linking>
+
+ undefined    first referenced
+  symbol          in file     
+ ---------    ----------------
+ g_pfnVectors ./main.obj      
+
+error #10234-D: unresolved symbols remain
+error #10010: errors encountered during linking; "sdhost.out" not built
+
+>> Compilation failure
+gmake: *** [sdhost.out] Error 1
+gmake: Target `all' not remade because of errors.
+
+**** Build Finished ****

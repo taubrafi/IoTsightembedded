@@ -1,0 +1,268 @@
+******************************************************************************
+                  TI ARM Linker PC v5.2.5                      
+******************************************************************************
+>> Linked Thu Apr 07 04:28:02 2016
+
+OUTPUT FILE NAME:   <Copy of adc.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 00000719
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  RAM                   00000020   ffffffe0  00001803  ffffe7dd  RWIX
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000020    00000020    00000784   00000784    r-x
+  00000020    00000020    00000784   00000784    r-x .text
+000007a4    000007a4    00001038   00000000    rw-
+  000007a4    000007a4    00000034   00000000    rw- .data
+  000007d8    000007d8    00000003   00000000    rw- .bss
+  000007dc    000007dc    00001000   00000000    rw- .stack
+000017e0    000017e0    00000048   00000048    r--
+  000017e0    000017e0    00000048   00000048    r-- .cinit
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.text      0    00000020    00000784     
+                  00000020    0000039c     gpio_if.obj (.text)
+                  000003bc    0000009c     rtsv7M4_T_le_eabi.lib : memcpy_t2.obj (.text)
+                  00000458    00000090     main.obj (.text)
+                  000004e8    0000007a     rtsv7M4_T_le_eabi.lib : memset_t2.obj (.text)
+                  00000562    00000002     --HOLE-- [fill = 0]
+                  00000564    0000006c                           : autoinit.obj (.text)
+                  000005d0    0000006a                           : copy_decompress_rle.obj (.text)
+                  0000063a    00000002     --HOLE-- [fill = 0]
+                  0000063c    0000004c     pinmux.obj (.text)
+                  00000688    0000004c     rtsv7M4_T_le_eabi.lib : cpy_tbl.obj (.text)
+                  000006d4    00000044                           : exit.obj (.text)
+                  00000718    0000003c                           : boot.obj (.text)
+                  00000754    00000018                           : args_main.obj (.text)
+                  0000076c    00000014                           : _lock.obj (.text)
+                  00000780    0000000e                           : copy_decompress_none.obj (.text:decompress:none)
+                  0000078e    0000000c                           : copy_zero_init.obj (.text:decompress:ZI)
+                  0000079a    00000006                           : copy_decompress_rle.obj (.text:decompress:rle24)
+                  000007a0    00000004                           : pre_init.obj (.text)
+
+.data      0    000007a4    00000034     UNINITIALIZED
+                  000007a4    00000020     gpio_if.obj (.data)
+                  000007c4    00000008     rtsv7M4_T_le_eabi.lib : _lock.obj (.data)
+                  000007cc    00000008                           : exit.obj (.data)
+                  000007d4    00000004                           : stkdepth_vars.obj (.data)
+
+.TI.persistent 
+*          0    000007a4    00000000     UNINITIALIZED
+
+.bss       0    000007d8    00000003     UNINITIALIZED
+                  000007d8    00000001     (.common:g_ucLED1Pin)
+                  000007d9    00000001     (.common:g_ucLED2Pin)
+                  000007da    00000001     (.common:g_ucLED3Pin)
+
+.TI.noinit 
+*          0    000007d8    00000000     UNINITIALIZED
+
+.cinit     0    000017e0    00000048     
+                  000017e0    0000001d     (.cinit..data.load) [load image, compression = rle]
+                  000017fd    00000003     --HOLE-- [fill = 0]
+                  00001800    0000000c     (__TI_handler_table)
+                  0000180c    00000004     --HOLE-- [fill = 0]
+                  00001810    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00001818    00000010     (__TI_cinit_table)
+
+.init_array 
+*          0    00000020    00000000     UNINITIALIZED
+
+.stack     0    000007dc    00001000     UNINITIALIZED
+                  000007dc    00001000     --HOLE--
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00001818 records: 2, size/record: 8, table size: 16
+	.data: load addr=000017e0, load size=0000001d bytes, run addr=000007a4, run size=00000034 bytes, compression=rle
+	.bss: load addr=00001810, load size=00000008 bytes, run addr=000007d8, run size=00000003 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00001800 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                       
+-------   ----                       
+000006d5  C$$EXIT                    
+UNDEFED   GPIODirModeSet             
+UNDEFED   GPIOIntClear               
+UNDEFED   GPIOIntEnable              
+UNDEFED   GPIOIntRegister            
+UNDEFED   GPIOIntTypeSet             
+UNDEFED   GPIOPinRead                
+UNDEFED   GPIOPinWrite               
+000002e1  GPIO_IF_ConfigureNIntEnable
+0000036d  GPIO_IF_Get                
+0000029b  GPIO_IF_GetPortNPin        
+0000005d  GPIO_IF_LedConfigure       
+0000014f  GPIO_IF_LedOff             
+0000009b  GPIO_IF_LedOn              
+00000203  GPIO_IF_LedStatus          
+0000026d  GPIO_IF_LedToggle          
+00000329  GPIO_IF_Set                
+UNDEFED   IntEnable                  
+UNDEFED   IntMasterEnable            
+UNDEFED   IntPrioritySet             
+UNDEFED   IntVTableBaseSet           
+00000459  LEDBlinkyRoutine           
+UNDEFED   PRCMCC3200MCUInit          
+UNDEFED   PRCMPeripheralClkEnable    
+0000063d  PinMuxConfig               
+UNDEFED   PinTypeGPIO                
+UNDEFED   SHT$$INIT_ARRAY$$Base      
+UNDEFED   SHT$$INIT_ARRAY$$Limit     
+UNDEFED   UtilsDelay                 
+000017dc  __STACK_END                
+00001000  __STACK_SIZE               
+00001818  __TI_CINIT_Base            
+00001828  __TI_CINIT_Limit           
+00001800  __TI_Handler_Table_Base    
+0000180c  __TI_Handler_Table_Limit   
+00000565  __TI_auto_init             
+000007cc  __TI_cleanup_ptr           
+00000781  __TI_decompress_none       
+0000079b  __TI_decompress_rle24      
+000007d0  __TI_dtors_ptr             
+000017e0  __TI_static_base__         
+0000078f  __TI_zero_init             
+000004e9  __aeabi_memclr             
+000004e9  __aeabi_memclr4            
+000004e9  __aeabi_memclr8            
+000003bd  __aeabi_memcpy             
+000003bd  __aeabi_memcpy4            
+000003bd  __aeabi_memcpy8            
+000004eb  __aeabi_memset             
+000004eb  __aeabi_memset4            
+000004eb  __aeabi_memset8            
+ffffffff  __binit__                  
+ffffffff  __c_args__                 
+000007dc  __stack                    
+00000755  _args_main                 
+00000719  _c_int00                   
+000007c4  _lock                      
+0000077b  _nop                       
+00000773  _register_lock             
+0000076d  _register_unlock           
+000007a1  _system_pre_init           
+000007c8  _unlock                    
+000006d9  abort                      
+ffffffff  binit                      
+00000689  copy_in                    
+000006e1  exit                       
+UNDEFED   g_pfnVectors               
+000007d8  g_ucLED1Pin                
+000007d9  g_ucLED2Pin                
+000007da  g_ucLED3Pin                
+000007b8  g_uiLED1Port               
+000007bc  g_uiLED2Port               
+000007c0  g_uiLED3Port               
+000004c3  main                       
+000007d4  main_func_sp               
+000003bd  memcpy                     
+000004f1  memset                     
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                       
+-------   ----                       
+0000005d  GPIO_IF_LedConfigure       
+0000009b  GPIO_IF_LedOn              
+0000014f  GPIO_IF_LedOff             
+00000203  GPIO_IF_LedStatus          
+0000026d  GPIO_IF_LedToggle          
+0000029b  GPIO_IF_GetPortNPin        
+000002e1  GPIO_IF_ConfigureNIntEnable
+00000329  GPIO_IF_Set                
+0000036d  GPIO_IF_Get                
+000003bd  __aeabi_memcpy             
+000003bd  __aeabi_memcpy4            
+000003bd  __aeabi_memcpy8            
+000003bd  memcpy                     
+00000459  LEDBlinkyRoutine           
+000004c3  main                       
+000004e9  __aeabi_memclr             
+000004e9  __aeabi_memclr4            
+000004e9  __aeabi_memclr8            
+000004eb  __aeabi_memset             
+000004eb  __aeabi_memset4            
+000004eb  __aeabi_memset8            
+000004f1  memset                     
+00000565  __TI_auto_init             
+0000063d  PinMuxConfig               
+00000689  copy_in                    
+000006d5  C$$EXIT                    
+000006d9  abort                      
+000006e1  exit                       
+00000719  _c_int00                   
+00000755  _args_main                 
+0000076d  _register_unlock           
+00000773  _register_lock             
+0000077b  _nop                       
+00000781  __TI_decompress_none       
+0000078f  __TI_zero_init             
+0000079b  __TI_decompress_rle24      
+000007a1  _system_pre_init           
+000007b8  g_uiLED1Port               
+000007bc  g_uiLED2Port               
+000007c0  g_uiLED3Port               
+000007c4  _lock                      
+000007c8  _unlock                    
+000007cc  __TI_cleanup_ptr           
+000007d0  __TI_dtors_ptr             
+000007d4  main_func_sp               
+000007d8  g_ucLED1Pin                
+000007d9  g_ucLED2Pin                
+000007da  g_ucLED3Pin                
+000007dc  __stack                    
+00001000  __STACK_SIZE               
+000017dc  __STACK_END                
+000017e0  __TI_static_base__         
+00001800  __TI_Handler_Table_Base    
+0000180c  __TI_Handler_Table_Limit   
+00001818  __TI_CINIT_Base            
+00001828  __TI_CINIT_Limit           
+ffffffff  __binit__                  
+ffffffff  __c_args__                 
+ffffffff  binit                      
+UNDEFED   GPIODirModeSet             
+UNDEFED   GPIOIntClear               
+UNDEFED   GPIOIntEnable              
+UNDEFED   GPIOIntRegister            
+UNDEFED   GPIOIntTypeSet             
+UNDEFED   GPIOPinRead                
+UNDEFED   GPIOPinWrite               
+UNDEFED   IntEnable                  
+UNDEFED   IntMasterEnable            
+UNDEFED   IntPrioritySet             
+UNDEFED   IntVTableBaseSet           
+UNDEFED   PRCMCC3200MCUInit          
+UNDEFED   PRCMPeripheralClkEnable    
+UNDEFED   PinTypeGPIO                
+UNDEFED   SHT$$INIT_ARRAY$$Base      
+UNDEFED   SHT$$INIT_ARRAY$$Limit     
+UNDEFED   UtilsDelay                 
+UNDEFED   g_pfnVectors               
+
+[77 symbols]
