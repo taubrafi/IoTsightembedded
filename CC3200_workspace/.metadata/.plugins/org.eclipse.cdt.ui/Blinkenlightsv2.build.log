@@ -2,44 +2,6 @@
 **** Build of configuration Debug for project Blinkenlightsv2 ****
 
 "C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
-'Building file: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/gpio_if.c'
-'Invoking: ARM Compiler'
-"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/" -g --define=cc3200 --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="gpio_if.pp"  "C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/gpio_if.c"
-'Finished building: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/gpio_if.c'
-' '
-'Building file: ../main.c'
-'Invoking: ARM Compiler'
-"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/" -g --define=cc3200 --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="main.pp"  "../main.c"
-'Finished building: ../main.c'
-' '
-'Building file: ../pinmux.c'
-'Invoking: ARM Compiler'
-"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/" -g --define=cc3200 --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="pinmux.pp"  "../pinmux.c"
-'Finished building: ../pinmux.c'
-' '
-'Building file: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/startup_ccs.c'
-'Invoking: ARM Compiler'
-"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/" -g --define=cc3200 --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="startup_ccs.pp"  "C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/startup_ccs.c"
-'Finished building: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common/startup_ccs.c'
-' '
-'Building target: Blinkenlightsv2.out'
-'Invoking: ARM Linker'
-"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --abi=eabi -me -g --define=cc3200 --diag_wrap=off --diag_warning=225 --display_error_number -z -m"Blinkenlightsv2.map" --heap_size=0x0 --stack_size=0x512 -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/lib" -i"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib/ccs/Release" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --reread_libs --display_error_number --diag_wrap=off --warn_sections --xml_link_info="Blinkenlightsv2_linkInfo.xml" --rom_model -o "Blinkenlightsv2.out" "./gpio_if.obj" "./main.obj" "./pinmux.obj" "./startup_ccs.obj" "../cc3200v1p32.cmd"  -l"libc.a" -ldriverlib.a 
-<Linking>
-'Finished building target: Blinkenlightsv2.out'
-' '
-'Invoking: ARM Hex Utility'
-"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armhex"  -o "Blinkenlightsv2.hex"  "Blinkenlightsv2.out" 
-Translating to Extended Tektronix format...
-warning: section Blinkenlightsv2.out(.text) was padded by 2 to a size of 3536
-   to satisfy the specified memory width of 4
-   "Blinkenlightsv2.out" .intvecs ==> .intvecs
-   "Blinkenlightsv2.out" .text ==> .text
-   "Blinkenlightsv2.out" .const ==> .const
-   "Blinkenlightsv2.out" .cinit ==> .cinit
-'Finished building: Blinkenlightsv2.hex'
-' '
-"C:/ti/ccsv6/utils/tiobj2bin/tiobj2bin" "Blinkenlightsv2.out" "Blinkenlightsv2.bin" "C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armofd" "C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armhex" "C:/ti/ccsv6/utils/tiobj2bin/mkhex4bin"
-' '
+gmake: Nothing to be done for `all'.
 
 **** Build Finished ****

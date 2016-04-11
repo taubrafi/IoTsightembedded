@@ -74,7 +74,7 @@
 #define APP_NAME            "HTTP Client"
 
 #define POST_REQUEST_URI 	"/post"
-#define POST_DATA           "{\n\"name\":\"xyz\",\n\"address\":\n{\n\"plot#\":12,\n\"street\":\"abc\",\n\"city\":\"ijk\"\n},\n\"age\":30\n}"
+#define POST_DATA           "csrfmiddlewaretoken=zqpw6sVOhMSxbhKcbRebc9MWP6dKzLMB&IOT_id=7&gps_lat=7&gps_long=7&gps_elev=7&heading_point=7\n"// "{\n\"name\":\"xyz\",\n\"address\":\n{\n\"plot#\":12,\n\"street\":\"abc\",\n\"city\":\"ijk\"\n},\n\"age\":30\n}"
 
 #define DELETE_REQUEST_URI 	"/delete"
 
@@ -82,11 +82,11 @@
 #define PUT_REQUEST_URI 	"/put"
 #define PUT_DATA            "PUT request."
 
-#define GET_REQUEST_URI 	"/get"
+#define GET_REQUEST_URI 	"/get a=5&b=7"
 
 
-#define HOST_NAME       	"httpbin.org" //"<host name>"
-#define HOST_PORT           80
+#define HOST_NAME       	"192.168.1.29"//"www.posttestserver.com"//"52.50.107.126"//"google.com" //"<host name>"
+#define HOST_PORT           8888//80
 
 #define PROXY_IP       	    <proxy_ip>
 #define PROXY_PORT          <proxy_port>
@@ -1315,6 +1315,7 @@ int main()
     UART_PRINT("HTTP Post End:\n\r");
 
     UART_PRINT("\n\r");
+    /*
     UART_PRINT("HTTP Delete Begin:\n\r");
     lRetVal = HTTPDeleteMethod(&httpClient);
 
@@ -1333,7 +1334,7 @@ int main()
     	UART_PRINT("HTTP Put failed.\n\r");
     }
     UART_PRINT("HTTP Put End:\n\r");
-
+*/
     UART_PRINT("\n\r");
     UART_PRINT("HTTP Get Begin:\n\r");
     lRetVal = HTTPGetMethod(&httpClient);
