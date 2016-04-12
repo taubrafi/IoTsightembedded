@@ -52,16 +52,22 @@
 // driverlib includes
 #include "hw_ints.h"
 #include "hw_types.h"
+#include "hw_memmap.h"
+#include "hw_common_reg.h"
+#include "hw_apps_rcm.h"
 #include "rom.h"
 #include "rom_map.h"
 #include "prcm.h"
 #include "utils.h"
 #include "interrupt.h"
+#include "gpio.h"
 
 // common interface includes
 #include "uart_if.h"
+#include "gpio_if.h"
 #include "common.h"
 #include "pinmux.h"
+
 
 // HTTP Client lib
 #include <http/client/httpcli.h>
@@ -82,11 +88,11 @@
 #define PUT_REQUEST_URI 	"/put"
 #define PUT_DATA            "PUT request."
 
-#define GET_REQUEST_URI 	"/get a=5&b=7"
+#define GET_REQUEST_URI 	"/shots/get/1/2/3/4/5"
 
 
-#define HOST_NAME       	"192.168.1.29"//"www.posttestserver.com"//"52.50.107.126"//"google.com" //"<host name>"
-#define HOST_PORT           8888//80
+#define HOST_NAME       	"52.50.107.126"//"www.posttestserver.com"//"52.50.107.126"//"google.com" //"<host name>"
+#define HOST_PORT           80//80
 
 #define PROXY_IP       	    <proxy_ip>
 #define PROXY_PORT          <proxy_port>
@@ -1285,11 +1291,14 @@ int main()
     // Configuring UART
     //
     InitTerm();
+    GPIO_IF_LedConfigure(LED1|LED2|LED3);
 
     //
     // Display banner
     //
     DisplayBanner(APP_NAME);
+
+    GPIO_IF_LedOff(MCU_ALL_LED_IND);
 
     InitializeAppVariables();
 
@@ -1298,13 +1307,15 @@ int main()
     {
         LOOP_FOREVER();
     }
+    GPIO_IF_LedOn(MCU_RED_LED_GPIO);
 
     lRetVal = ConnectToHTTPServer(&httpClient);
     if(lRetVal < 0)
     {
         LOOP_FOREVER();
     }
-
+    GPIO_IF_LedOn(MCU_ORANGE_LED_GPIO);
+/*
     UART_PRINT("\n\r");
     UART_PRINT("HTTP Post Begin:\n\r");
     lRetVal = HTTPPostMethod(&httpClient);
@@ -1315,7 +1326,7 @@ int main()
     UART_PRINT("HTTP Post End:\n\r");
 
     UART_PRINT("\n\r");
-    /*
+
     UART_PRINT("HTTP Delete Begin:\n\r");
     lRetVal = HTTPDeleteMethod(&httpClient);
 
@@ -1344,7 +1355,7 @@ int main()
     }
     UART_PRINT("HTTP Get End:\n\r");
     UART_PRINT("\n\r");
-
+    GPIO_IF_LedOn(MCU_GREEN_LED_GPIO);
     // Stop the CC3200 device
 
     LOOP_FOREVER();
