@@ -45,7 +45,7 @@
 // docs\examples\CC32xx_SDHost_FatFS.pdf
 //
 //*****************************************************************************
-
+#include <stdio.h>
 // driverlib includes
 #include "hw_types.h"
 #include "hw_memmap.h"
@@ -66,7 +66,7 @@
 
 #define APPLICATION_VERSION  "1.1.1"
 #define USERFILE        "userfile.txt"
-#define SYSFILE         "sysfile.txt"
+#define SYSFILE         "userfile.txt"
 #define SYSTEXT         "The quick brown fox jumps over the lazy dog"
 
 //*****************************************************************************
@@ -97,28 +97,28 @@ extern uVectorEntry __vector_table;
 static void
 ListDirectory(DIR *dir)
 {
-    FILINFO fno;
-    FRESULT res;
-    unsigned long ulSize;
-    tBoolean bIsInKB;
+	FILINFO fno;
+	FRESULT res;
+	unsigned long ulSize;
+	tBoolean bIsInKB;
 
-    for(;;)
-    {
-        res = f_readdir(dir, &fno);           // Read a directory item
-        if (res != FR_OK || fno.fname[0] == 0)
-        {
-        break;                                // Break on error or end of dir
-        }
-        ulSize = fno.fsize;
-        bIsInKB = false;
-        if(ulSize > 1024)
-        {
-            ulSize = ulSize/1024;
-            bIsInKB = true;
-        }
-        Report("->%-15s%5d %-2s    %-5s\n\r",fno.fname,ulSize,\
-                (bIsInKB == true)?"KB":"B",(fno.fattrib&AM_DIR)?"Dir":"File");
-    }
+	for(;;)
+	{
+		res = f_readdir(dir, &fno);           // Read a directory item
+		if (res != FR_OK || fno.fname[0] == 0)
+		{
+			break;                                // Break on error or end of dir
+		}
+		ulSize = fno.fsize;
+		bIsInKB = false;
+		if(ulSize > 1024)
+		{
+			ulSize = ulSize/1024;
+			bIsInKB = true;
+		}
+		Report("->%-15s%5d %-2s    %-5s\n\r",fno.fname,ulSize,\
+				(bIsInKB == true)?"KB":"B",(fno.fattrib&AM_DIR)?"Dir":"File");
+	}
 
 }
 
@@ -134,25 +134,25 @@ ListDirectory(DIR *dir)
 static void
 BoardInit(void)
 {
-/* In case of TI-RTOS vector table is initialize by OS itself */
+	/* In case of TI-RTOS vector table is initialize by OS itself */
 #ifndef USE_TIRTOS
-    //
-    // Set vector table base
-    //
+	//
+	// Set vector table base
+	//
 #if defined(ccs)
-    MAP_IntVTableBaseSet((unsigned long)&g_pfnVectors[0]);
+	MAP_IntVTableBaseSet((unsigned long)&g_pfnVectors[0]);
 #endif
 #if defined(ewarm)
-    MAP_IntVTableBaseSet((unsigned long)&__vector_table);
+	MAP_IntVTableBaseSet((unsigned long)&__vector_table);
 #endif
 #endif
-    //
-    // Enable Processor
-    //
-    MAP_IntMasterEnable();
-    MAP_IntEnable(FAULT_SYSTICK);
+	//
+	// Enable Processor
+	//
+	MAP_IntMasterEnable();
+	MAP_IntEnable(FAULT_SYSTICK);
 
-    PRCMCC3200MCUInit();
+	PRCMCC3200MCUInit();
 }
 
 //****************************************************************************
@@ -168,119 +168,144 @@ BoardInit(void)
 void main()
 {
 
-    FIL fp;
-    FATFS fs;
-    FRESULT res;
-    DIR dir;
-    UINT Size;
+	FIL fp;
+	FATFS fs;
+	FRESULT res;
+	DIR dir;
+	UINT Size;
 
-    //
-    // Initialize Board configurations
-    //
-    BoardInit();
+	//
+	// Initialize Board configurations
+	//
+	BoardInit();
 
-    //
-    // Muxing for Enabling UART_TX and UART_RX.
-    //
-    PinMuxConfig();
+	//
+	// Muxing for Enabling UART_TX and UART_RX.
+	//
+	PinMuxConfig();
 
-    //
-    // Set the SD card clock as output pin
-    //
-    MAP_PinDirModeSet(PIN_07,PIN_DIR_MODE_OUT);
+	//
+	// Set the SD card clock as output pin
+	//
+	MAP_PinDirModeSet(PIN_07,PIN_DIR_MODE_OUT);
 
-    //
-    // Enable Pull up on data
-    //
-    MAP_PinConfigSet(PIN_06,PIN_STRENGTH_4MA, PIN_TYPE_STD_PU);
+	//
+	// Enable Pull up on data
+	//
+	MAP_PinConfigSet(PIN_06,PIN_STRENGTH_4MA, PIN_TYPE_STD_PU);
 
-    //
-    // Enable Pull up on CMD
-    //
-    MAP_PinConfigSet(PIN_08,PIN_STRENGTH_4MA, PIN_TYPE_STD_PU);
+	//
+	// Enable Pull up on CMD
+	//
+	MAP_PinConfigSet(PIN_08,PIN_STRENGTH_4MA, PIN_TYPE_STD_PU);
 
-    //
-    // Initialising the Terminal.
-    //
-    InitTerm();
+	//
+	// Initialising the Terminal.
+	//
+	InitTerm();
 
-    //
-    // Clearing the Terminal.
-    //
-    ClearTerm();
+	//
+	// Clearing the Terminal.
+	//
+	ClearTerm();
 
-    //
-    // Display the Banner
-    //
-    Message("\n\n\n\r");
-    Message("\t\t   ********************************************\n\r");
-    Message("\t\t        CC3200 SDHost Fatfs Demo Application  \n\r");
-    Message("\t\t   ********************************************\n\r");
-    Message("\n\n\n\r");
+	//
+	// Display the Banner
+	//
+	Message("\n\n\n\r");
+	Message("\t\t   ********************************************\n\r");
+	Message("\t\t        CC3200 SDHost Fatfs Demo Application  \n\r");
+	Message("\t\t   ********************************************\n\r");
+	Message("\n\n\n\r");
 
-    //
-    // Enable MMCHS
-    //
-    MAP_PRCMPeripheralClkEnable(PRCM_SDHOST,PRCM_RUN_MODE_CLK);
+	//
+	// Enable MMCHS
+	//
+	MAP_PRCMPeripheralClkEnable(PRCM_SDHOST,PRCM_RUN_MODE_CLK);
 
-    //
-    // Reset MMCHS
-    //
-    MAP_PRCMPeripheralReset(PRCM_SDHOST);
+	//
+	// Reset MMCHS
+	//
+	MAP_PRCMPeripheralReset(PRCM_SDHOST);
 
-    //
-    // Configure MMCHS
-    //
-    MAP_SDHostInit(SDHOST_BASE);
+	//
+	// Configure MMCHS
+	//
+	MAP_SDHostInit(SDHOST_BASE);
 
-    //
-    // Configure card clock
-    //
-    MAP_SDHostSetExpClk(SDHOST_BASE,
-                            MAP_PRCMPeripheralClockGet(PRCM_SDHOST),15000000);
+	//
+	// Configure card clock
+	//
+	MAP_SDHostSetExpClk(SDHOST_BASE,
+			MAP_PRCMPeripheralClockGet(PRCM_SDHOST),15000000);
 
-    f_mount(&fs,"0",1);
-    res = f_opendir(&dir,"/");
-    if( res == FR_OK)
-    {
-        Message("Opening root directory.................... [ok]\n\n\r");
-        Message("/\n\r");
-        ListDirectory(&dir);
-    }
-    else
-    {
-        Message("Opening root directory.................... [Failed]\n\n\r");
-    }
+	f_mount(&fs,"0",1);
+	res = f_opendir(&dir,"/");
+	if( res == FR_OK)
+	{
+		Message("Opening root directory.................... [ok]\n\n\r");
+		Message("/\n\r");
+		ListDirectory(&dir);
+	}
+	else
+	{
+		Message("Opening root directory.................... [Failed]\n\n\r");
+	}
 
-    Message("\n\rReading user file...\n\r");
-    res = f_open(&fp,USERFILE,FA_READ);
-    if(res == FR_OK)
-    {
-        f_read(&fp,pBuffer,100,&Size);
-        Report("Read : %d Bytes\n\n\r",Size);
-        Report("%s",pBuffer);
-        f_close(&fp);
-    }
-    else
-    {
-        Report("Failed to open %s\n\r",USERFILE);
-    }
+	Message("\n\rReading user file...\n\r");
+	res = f_open(&fp,USERFILE,FA_READ);
+	if(res == FR_OK)
+	{
+		f_read(&fp,pBuffer,100,&Size);
+		Report("Read : %d Bytes\n\n\r",Size);
+		Report("%s",pBuffer);
+		f_close(&fp);
+	}
+	else
+	{
+		Report("Failed to open %s\n\r",USERFILE);
+	}
 
-    Message("\n\n\rWriting system file...\n\r");
-    res = f_open(&fp,SYSFILE,FA_CREATE_ALWAYS|FA_WRITE);
-    if(res == FR_OK)
-    {
-        f_write(&fp,SYSTEXT,sizeof(SYSTEXT),&Size);
-        Report("Wrote : %d Bytes",Size);
-        res = f_close(&fp);
-    }
-    else
-    {
-        Message("Failed to create a new file\n\r");
-    }
+	Message("\n\n\rWriting system file...\n\r");
 
-    while(1)
-    {
+	MAP_UtilsDelay(8000000);
+	res = f_open(&fp,SYSFILE,FA_CREATE_ALWAYS|FA_READ|FA_WRITE);
+	if(res == FR_OK)
+	{
+		f_read(&fp,pBuffer,100,&Size);
+		Report("Read : %d Bytes\n\n\r",Size);
+		Report("%s\n",pBuffer);
+		MAP_UtilsDelay(8000000);
+		res = f_write(&fp,SYSTEXT,sizeof(SYSTEXT),&Size);
+		Report("Res : %d Bytes\n\n\r",res);
+		Report("Wrote : %d Bytes",Size);
+		MAP_UtilsDelay(8000000);
+		res = f_close(&fp);
+	}
+	else
+	{
+		Message("Failed to create a new file\n\r");
+	}
 
-    }
+
+	Message("\n\rReading system file...\n\r");
+	res = f_open(&fp,SYSFILE,FA_READ);
+	if(res == FR_OK)
+	{
+		f_read(&fp,pBuffer,100,&Size);
+		Report("Read : %d Bytes\n\n\r",Size);
+		Report("%s",pBuffer);
+		f_close(&fp);
+	}
+	else
+	{
+		Report("Failed to open %s\n\r",SYSFILE);
+	}
+
+	Message("\n\rDone!\n\r");
+
+	while(1)
+	{
+
+	}
 }

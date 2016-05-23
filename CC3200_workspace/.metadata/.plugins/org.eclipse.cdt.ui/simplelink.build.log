@@ -2,67 +2,6 @@
 **** Build of configuration OS for project simplelink ****
 
 "C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
-'Building file: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/cc_pal.c'
-'Invoking: ARM Compiler'
-"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me -Ooff --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/oslib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --gcc --define=ccs --define=DISABLE_DEBUGGER_RECONNECT --define=SL_FULL --define=SL_PLATFORM_MULTI_THREADED --define=cc3200 --diag_wrap=off --diag_warning=225 --display_error_number --gen_func_subsections=on --printf_support=full --ual --preproc_with_compile --preproc_dependency="cc_pal.pp"  "C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/cc_pal.c"
-'Finished building: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/cc_pal.c'
-' '
-'Building file: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/device.c'
-'Invoking: ARM Compiler'
-"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me -Ooff --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/oslib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --gcc --define=ccs --define=DISABLE_DEBUGGER_RECONNECT --define=SL_FULL --define=SL_PLATFORM_MULTI_THREADED --define=cc3200 --diag_wrap=off --diag_warning=225 --display_error_number --gen_func_subsections=on --printf_support=full --ual --preproc_with_compile --preproc_dependency="device.pp"  "C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/device.c"
-'Finished building: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/device.c'
-' '
-'Building file: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/driver.c'
-'Invoking: ARM Compiler'
-"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me -Ooff --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/oslib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --gcc --define=ccs --define=DISABLE_DEBUGGER_RECONNECT --define=SL_FULL --define=SL_PLATFORM_MULTI_THREADED --define=cc3200 --diag_wrap=off --diag_warning=225 --display_error_number --gen_func_subsections=on --printf_support=full --ual --preproc_with_compile --preproc_dependency="driver.pp"  "C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/driver.c"
-'Finished building: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/driver.c'
-' '
-'Building file: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/flowcont.c'
-'Invoking: ARM Compiler'
-"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me -Ooff --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/oslib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --gcc --define=ccs --define=DISABLE_DEBUGGER_RECONNECT --define=SL_FULL --define=SL_PLATFORM_MULTI_THREADED --define=cc3200 --diag_wrap=off --diag_warning=225 --display_error_number --gen_func_subsections=on --printf_support=full --ual --preproc_with_compile --preproc_dependency="flowcont.pp"  "C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/flowcont.c"
-'Finished building: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/flowcont.c'
-' '
-'Building file: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/fs.c'
-'Invoking: ARM Compiler'
-"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me -Ooff --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/oslib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --gcc --define=ccs --define=DISABLE_DEBUGGER_RECONNECT --define=SL_FULL --define=SL_PLATFORM_MULTI_THREADED --define=cc3200 --diag_wrap=off --diag_warning=225 --display_error_number --gen_func_subsections=on --printf_support=full --ual --preproc_with_compile --preproc_dependency="fs.pp"  "C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/fs.c"
-'Finished building: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/fs.c'
-' '
-'Building file: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/netapp.c'
-'Invoking: ARM Compiler'
-"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me -Ooff --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/oslib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --gcc --define=ccs --define=DISABLE_DEBUGGER_RECONNECT --define=SL_FULL --define=SL_PLATFORM_MULTI_THREADED --define=cc3200 --diag_wrap=off --diag_warning=225 --display_error_number --gen_func_subsections=on --printf_support=full --ual --preproc_with_compile --preproc_dependency="netapp.pp"  "C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/netapp.c"
-'Finished building: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/netapp.c'
-' '
-'Building file: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/netcfg.c'
-'Invoking: ARM Compiler'
-"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me -Ooff --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/oslib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --gcc --define=ccs --define=DISABLE_DEBUGGER_RECONNECT --define=SL_FULL --define=SL_PLATFORM_MULTI_THREADED --define=cc3200 --diag_wrap=off --diag_warning=225 --display_error_number --gen_func_subsections=on --printf_support=full --ual --preproc_with_compile --preproc_dependency="netcfg.pp"  "C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/netcfg.c"
-'Finished building: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/netcfg.c'
-' '
-'Building file: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/nonos.c'
-'Invoking: ARM Compiler'
-"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me -Ooff --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/oslib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --gcc --define=ccs --define=DISABLE_DEBUGGER_RECONNECT --define=SL_FULL --define=SL_PLATFORM_MULTI_THREADED --define=cc3200 --diag_wrap=off --diag_warning=225 --display_error_number --gen_func_subsections=on --printf_support=full --ual --preproc_with_compile --preproc_dependency="nonos.pp"  "C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/nonos.c"
-'Finished building: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/nonos.c'
-' '
-'Building file: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/socket.c'
-'Invoking: ARM Compiler'
-"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me -Ooff --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/oslib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --gcc --define=ccs --define=DISABLE_DEBUGGER_RECONNECT --define=SL_FULL --define=SL_PLATFORM_MULTI_THREADED --define=cc3200 --diag_wrap=off --diag_warning=225 --display_error_number --gen_func_subsections=on --printf_support=full --ual --preproc_with_compile --preproc_dependency="socket.pp"  "C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/socket.c"
-'Finished building: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/socket.c'
-' '
-'Building file: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/spawn.c'
-'Invoking: ARM Compiler'
-"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me -Ooff --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/oslib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --gcc --define=ccs --define=DISABLE_DEBUGGER_RECONNECT --define=SL_FULL --define=SL_PLATFORM_MULTI_THREADED --define=cc3200 --diag_wrap=off --diag_warning=225 --display_error_number --gen_func_subsections=on --printf_support=full --ual --preproc_with_compile --preproc_dependency="spawn.pp"  "C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/spawn.c"
-'Finished building: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/spawn.c'
-' '
-'Building file: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/wlan.c'
-'Invoking: ARM Compiler'
-"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me -Ooff --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/oslib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --gcc --define=ccs --define=DISABLE_DEBUGGER_RECONNECT --define=SL_FULL --define=SL_PLATFORM_MULTI_THREADED --define=cc3200 --diag_wrap=off --diag_warning=225 --display_error_number --gen_func_subsections=on --printf_support=full --ual --preproc_with_compile --preproc_dependency="wlan.pp"  "C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/wlan.c"
-'Finished building: C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source/wlan.c'
-' '
-'Building target: simplelink.a'
-'Invoking: ARM Archiver'
-"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armar" r "simplelink.a" "./cc_pal.obj" "./device.obj" "./driver.obj" "./flowcont.obj" "./fs.obj" "./netapp.obj" "./netcfg.obj" "./nonos.obj" "./socket.obj" "./spawn.obj" "./wlan.obj"   
-  ==>  new archive 'simplelink.a'
-  ==>  building archive 'simplelink.a'
-'Finished building target: simplelink.a'
-' '
+gmake: Nothing to be done for `all'.
 
 **** Build Finished ****
