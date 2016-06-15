@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;http_client_demo/SimpleLinkFunctions&apos; to &apos;SimpleLinkFunctions.c&apos;" description="Rename resource &apos;SimpleLinkFunctions&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="SimpleLinkFunctions" name="SimpleLinkFunctions.c" stamp="1464027340927" updateReferences="true"/>
+</session>

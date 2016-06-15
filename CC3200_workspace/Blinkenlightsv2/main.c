@@ -67,6 +67,7 @@
 #include "hw_apps_rcm.h"
 #include "prcm.h"
 #include "rom.h"
+#include "pin.h"
 #include "rom_map.h"
 #include "prcm.h"
 #include "gpio.h"
@@ -130,13 +131,11 @@ void LEDBlinkyRoutine()
 		// Alternately toggle hi-low each of the GPIOs
 		// to switch the corresponding LED on/off.
 		//
-		GPIO_IF_LedOn(MCU_ALL_LED_IND);
+		GPIOPinWrite(GPIOA0_BASE, 0xC0, 0xFF);
+		GPIOPinWrite(GPIOA1_BASE, 0x01, 0xFF);
 		MAP_UtilsDelay(8000000);
-		GPIO_IF_LedOff(MCU_ALL_LED_IND);
-		MAP_UtilsDelay(8000000);
-		GPIO_IF_LedOn(MCU_ORANGE_LED_GPIO);
-		MAP_UtilsDelay(8000000);
-		GPIO_IF_LedOff(MCU_ALL_LED_IND);
+		GPIOPinWrite(GPIOA0_BASE, 0xC0, 0x00);
+		GPIOPinWrite(GPIOA1_BASE, 0x01, 0x00);
 		MAP_UtilsDelay(8000000);
 	}
 

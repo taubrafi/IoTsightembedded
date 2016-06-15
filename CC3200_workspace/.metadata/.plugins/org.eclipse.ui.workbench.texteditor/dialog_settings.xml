@@ -13,15 +13,16 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="terminated" key="selection"/>
+		<item value="HTTPGetMethod" key="selection"/>
 		<list key="findhistory">
-			<item value="terminated"/>
-			<item value="connection"/>
-			<item value="POST_DATA"/>
-			<item value="GET_REQUEST_URI"/>
-			<item value="File not found."/>
-			<item value="WlanConnect"/>
-			<item value="g_"/>
+			<item value="/1/2/3"/>
+			<item value="GET_REQUEST_URI_TEST_MSG"/>
+			<item value="rad"/>
+			<item value="deg"/>
+			<item value="pi"/>
+			<item value=" "/>
+			<item value="bytesReceived"/>
+			<item value="bytesRe"/>
 		</list>
 		<list key="replacehistory">
 		</list>
