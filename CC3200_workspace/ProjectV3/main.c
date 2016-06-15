@@ -899,7 +899,7 @@ int main()
 	double roll=-1, pitch=-1, yaw=-1;
 	float accMag=-1;
 
-	InitializeAppVariables();
+	/*InitializeAppVariables();
 
 	UART_PRINT("\n\r\n\rStops here on failure caused by debug!\n\r\n\r");
 	lRetVal = ConnectToAP();
@@ -915,7 +915,7 @@ int main()
 		LOOP_FOREVER();
 	}
 
-	UART_PRINT("\n\r");
+	UART_PRINT("\n\r");*/
 
 	while(1)
 	{
@@ -930,13 +930,13 @@ int main()
 
 		sprintf(strbuffer,"/shots/get/12345/%d/%d/0/%d", (int)roll, (int)pitch, (int)yaw);
 
-		lRetVal = HTTPGetMethod(&httpClient, strbuffer);
+		/*lRetVal = HTTPGetMethod(&httpClient, strbuffer);
 		if(lRetVal < 0)
 		{
 			UART_PRINT("HTTP Post Get failed.\n\r");
 		}
 		UART_PRINT("HTTP Get sent to server!\n\r\n\r");
-
+*/
 		UtilsDelay(2666667);
 	}
 	HTTPCli_disconnect(&httpClient);

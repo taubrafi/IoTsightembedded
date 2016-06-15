@@ -5,8 +5,6 @@
  *      Author: Rafi
  */
 
-
-
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -23,6 +21,8 @@
 
 SHORT Xmcal=400, Ymcal=400, Zmcal=400;
 float Xmoff=0, Ymoff=0, Zmoff=0;
+float Xmax=0, Ymax=0, Zmax=0;
+float Xmin=0, Ymin=0, Zmin=0;
 
 
 int init_HMC5883(char addr, char cal)
@@ -103,9 +103,29 @@ int HMC5883_read_magdata(char addr, float* Xmag, float* Ymag, float* Zmag)
 	Zdata <<=8;
 	Zdata += (int)rdata[5];
 
-	*Xmag = ((float)Xdata-Xmoff);// / Xmcal;
-	*Ymag = ((float)Ydata-Ymoff);// / Ymcal;
-	*Zmag = ((float)Zdata-Zmoff);// / Zmcal;
+	*Xmag = (float) Xdata;
+	*Ymag = (float) Ydata;
+	*Zmag = (float) Zdata;
+
+	if(*Xmag>Xmax)	Xmax=*Xmag;
+	if(*Ymag>Ymax)	Ymax=*Ymag;
+	if(*Zmag>Zmax)	Zmax=*Zmag;
+
+	if(*Xmag<Xmin)	Xmin=*Xmag;
+	if(*Ymag<Ymin)	Ymin=*Ymag;
+	if(*Zmag<Zmin)	Zmin=*Zmag;
+
+	Xmoff = 0.5*(Xmax+Xmin);
+	Ymoff = 0.5*(Ymax+Ymin);
+	Zmoff = 0.5*(Zmax+Zmin);
+
+	*Xmag -= Xmoff;
+	*Ymag -= Ymoff;
+	*Zmag -= Zmoff;
+
+	*Xmag /= Xmcal;
+	*Ymag /= Ymcal;
+	*Zmag /= Zmcal;
 
 	return 0;
 }
