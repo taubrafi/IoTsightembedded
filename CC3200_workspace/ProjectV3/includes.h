@@ -69,7 +69,7 @@ extern long bytesReceived; // variable to store the file size
 #include "HMC5883.h"
 #include "ADXL345.h"
 #include "IMU.h"
-
+#include "NMEA.h"
 
 
 #endif /* INCLUDES_H_ */

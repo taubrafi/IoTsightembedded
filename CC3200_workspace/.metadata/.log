@@ -8783,3 +8783,18 @@ Binding(CTRL+SHIFT+H,
 !ENTRY com.ti.ccstudio.debug 1 0 2016-06-16 00:38:31.675
 !MESSAGE DS_ERROR: Cortex_M4_0: Error: Debug Port error occurred.
 
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-06-16 02:19:39.885
+!MESSAGE Indexed 'interrupt' (5 sources, 30 headers) in 0.94 sec: 1,307 declarations; 2,136 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-06-16 02:21:52.818
+!MESSAGE Indexed 'uart_demo' (6 sources, 24 headers) in 0.443 sec: 849 declarations; 1,595 references; 0 unresolved inclusions; 0 syntax errors; 2 unresolved names (0.082%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-06-16 02:21:54.420
+!MESSAGE Indexed 'i2c_demo' (5 sources, 32 headers) in 0.722 sec: 1,517 declarations; 2,516 references; 0 unresolved inclusions; 0 syntax errors; 2 unresolved names (0.05%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-06-16 02:21:56.663
+!MESSAGE Indexed 'tcp_socket' (6 sources, 44 headers) in 1.64 sec: 2,236 declarations; 3,734 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-06-16 02:21:57.134
+!MESSAGE Indexed 'uart_demo' (4 sources, 22 headers) in 0.457 sec: 836 declarations; 1,476 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
