@@ -21,8 +21,8 @@
 
 SHORT Xmcal=400, Ymcal=400, Zmcal=400;
 float Xmoff=0, Ymoff=0, Zmoff=0;
-float Xmax=0, Ymax=0, Zmax=0;
-float Xmin=0, Ymin=0, Zmin=0;
+float Xmax=167, Ymax=174, Zmax=0;
+float Xmin=-151, Ymin=-172, Zmin=0;
 
 
 int init_HMC5883(char addr, char cal)
@@ -52,7 +52,7 @@ int init_HMC5883(char addr, char cal)
 
 		Zmcal = (int)rdata[5];
 		Zmcal <<=8;
-		Zmcal += (int)rdata[5];
+		Zmcal += (int)rdata[6];
 
 		Ymcal = (int)rdata[7];
 		Ymcal <<=8;
@@ -101,7 +101,7 @@ int HMC5883_read_magdata(char addr, float* Xmag, float* Ymag, float* Zmag)
 
 	Zdata = (int)rdata[5];
 	Zdata <<=8;
-	Zdata += (int)rdata[5];
+	Zdata += (int)rdata[6];
 
 	*Xmag = (float) Xdata;
 	*Ymag = (float) Ydata;
