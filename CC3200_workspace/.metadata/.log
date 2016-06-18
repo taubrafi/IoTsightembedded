@@ -10857,3 +10857,22 @@ java.nio.channels.ClosedByInterruptException
 !ENTRY com.ti.ccstudio.debug 1 0 2016-06-16 06:12:12.203
 !MESSAGE DS_ERROR: Cortex_M4_0: Breakpoint Manager: Error enabling this function: Address exceeds the allowed range
 
+!SESSION 2016-06-19 02:29:18.832 -----------------------------------------------
+eclipse.buildId=4.4.1.M20140925-0400
+java.version=1.7.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product com.ti.ccstudio.branding.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.ti.ccstudio.branding.product
+
+!ENTRY com.ti.common.core 4 0 2016-06-19 02:29:41.002
+!MESSAGE path=ccs_base/DebugServer
+
+!ENTRY com.ti.common.core 4 0 2016-06-19 02:29:41.037
+!MESSAGE debugServerDir=C:/ti/ccsv6/ccs_base/DebugServer
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-06-19 02:32:23.122
+!MESSAGE Indexed 'ProjectV3' (15 sources, 80 headers) in 17.9 sec: 4,147 declarations; 5,858 references; 0 unresolved inclusions; 1 syntax errors; 17 unresolved names (0.17%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-06-19 02:32:24.162
+!MESSAGE Indexed 'blinky' (4 sources, 19 headers) in 0.383 sec: 581 declarations; 1,348 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
