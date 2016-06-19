@@ -95,13 +95,14 @@ int HMC5883_read_magdata(char addr, float* Xmag, float* Ymag, float* Zmag)
 	Xdata <<=8;
 	Xdata += (int)rdata[4];
 
+	Zdata = (int)rdata[5];
+	Zdata <<=8;
+	Zdata += (int)rdata[6];
+
 	Ydata = (int)rdata[7];
 	Ydata <<=8;
 	Ydata += (int)rdata[8];
 
-	Zdata = (int)rdata[5];
-	Zdata <<=8;
-	Zdata += (int)rdata[6];
 
 	*Xmag = (float) Xdata;
 	*Ymag = (float) Ydata;
@@ -121,11 +122,11 @@ int HMC5883_read_magdata(char addr, float* Xmag, float* Ymag, float* Zmag)
 
 	*Xmag -= Xmoff;
 	*Ymag -= Ymoff;
-	*Zmag -= Zmoff;
+	//*Zmag -= Zmoff;
 
-	*Xmag /= Xmcal;
-	*Ymag /= Ymcal;
-	*Zmag /= Zmcal;
+	//*Xmag /= Xmcal;
+	//*Ymag /= Ymcal;
+	//*Zmag /= Zmcal;
 
 	return 0;
 }

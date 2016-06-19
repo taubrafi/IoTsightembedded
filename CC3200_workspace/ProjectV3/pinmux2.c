@@ -72,10 +72,14 @@ void PinMuxConfig(void)
 	PinModeSet(PIN_63, PIN_MODE_0);
 	PinModeSet(PIN_64, PIN_MODE_0);
 
-
+	PRCMPeripheralClkEnable(PRCM_GPIOA0, PRCM_RUN_MODE_CLK);
 	PRCMPeripheralClkEnable(PRCM_GPIOA1, PRCM_RUN_MODE_CLK);
+
+	//GPS pwr pin (0-on, 1-off)
 	GPIODirModeSet(GPIOA1_BASE, GPIO_PIN_1, GPIO_DIR_MODE_OUT);
 
+	//Onewire pin
+	GPIODirModeSet(GPIOA0_BASE, GPIO_PIN_5, GPIO_DIR_MODE_OUT);
 
 	//
 	// Enable Peripheral Clocks
@@ -84,6 +88,9 @@ void PinMuxConfig(void)
 	PRCMPeripheralClkEnable(PRCM_UARTA0, PRCM_RUN_MODE_CLK);
 	PRCMPeripheralClkEnable(PRCM_UARTA1, PRCM_RUN_MODE_CLK);
 	PRCMPeripheralClkEnable(PRCM_I2CA0, PRCM_RUN_MODE_CLK);
+
+
+
 
 	//
 	// Configure PIN_06 for SDHost0 SDCARD_DATA
@@ -100,6 +107,10 @@ void PinMuxConfig(void)
 	//
 	PinTypeSDHost(PIN_02, PIN_MODE_6);
 
+
+
+
+
 	//
 	// Configure PIN_55 for UART0 UART0_TX
 	//
@@ -109,6 +120,9 @@ void PinMuxConfig(void)
 	// Configure PIN_57 for UART0 UART0_RX
 	//
 	PinTypeUART(PIN_57, PIN_MODE_3);
+
+
+
 
 	//
 	// Configure PIN_07 for UART1 UART1_TX
@@ -129,6 +143,9 @@ void PinMuxConfig(void)
 	UARTIntRegister(UARTA1_BASE, UART1_Handler); //enable interrupts
 	UARTIntEnable(UARTA1_BASE, UART_INT_RX);
 	UARTEnable(UARTA1_BASE);
+
+
+
 
 	//
 	// Configure PIN_03 for I2C0 I2C_SCL

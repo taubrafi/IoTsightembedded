@@ -117,7 +117,7 @@ void UART1_Handler(void)
 	{
 		printing = (char) UARTCharGetNonBlocking(UARTA1_BASE);
 		ParseGPS(printing);
-		//UART_PRINT(&printing);
+			UART_PRINT(&printing);
 	}
 
 	UARTIntEnable(UARTA1_BASE, UART_INT_RX);
@@ -194,6 +194,7 @@ int main()
 	float Xacc=-1, Yacc=-1, Zacc=-1;
 	double roll=-1, pitch=-1, yaw=-1;
 	float accMag=-1;
+	unsigned char id[6];
 
 	/*InitializeAppVariables();
 
@@ -215,7 +216,7 @@ int main()
 
 	while(1)
 	{
-		UART_PRINT("\33[H\33[2J");
+	//	UART_PRINT("\33[H\33[2J");
 		if(HMC5883_read_magdata(MAG_ADDR, &Xmag, &Ymag, &Zmag)<0) UART_PRINT("!!! mag I2c Error\n\r");
 		if(ADXL345_read_accdata(ACC_ADDR, &Xacc, &Yacc, &Zacc)<0) UART_PRINT("!!! acc I2c Error\n\r");
 		accMag = sqrt(Xacc*Xacc + Yacc*Yacc + Zacc*Zacc);
@@ -227,8 +228,12 @@ int main()
 				gpsTime, gpsMsecs, gpsKnots, gpsCourse, gpsDate, gpsLat, gpsLong, gpsFix);
 		UART_PRINT(databuf);
 		sprintf(databuf,"X: %f    %f\n\rY:%f    %f\n\rZ:%f    %f\n\r",
-						Xmin, Xmax, Ymin, Ymax, Zmin, Zmax);
+				Xmin, Xmax, Ymin, Ymax, Zmin, Zmax);
 		UART_PRINT(databuf);
+
+		sprintf(databuf,"ID=%lld\n\r", ds2401_get_id_long());
+		UART_PRINT(databuf);
+
 
 
 		sprintf(strbuffer,"/shots/get/12345/%d/%d/0/%d", (int)roll, (int)pitch, (int)yaw);

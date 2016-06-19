@@ -106,6 +106,7 @@ typedef enum{
 #include "ADXL345.h"
 #include "IMU.h"
 #include "NMEA.h"
+#include "DS2401.h"
 
 
 
