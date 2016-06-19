@@ -1,0 +1,189 @@
+
+**** Build of configuration Release for project ProjectV3 ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../DS2401.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me --opt_for_speed=0 --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/third_party/fatfs/src" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/json/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --define=cc3200 --define=__SL__ --define=ccs --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="DS2401.pp"  "../DS2401.c"
+'Finished building: ../DS2401.c'
+' '
+'Building file: ../main.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me --opt_for_speed=0 --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/third_party/fatfs/src" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/json/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --define=cc3200 --define=__SL__ --define=ccs --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="main.pp"  "../main.c"
+"../main.c", line 256: warning #112-D: statement is unreachable
+"../main.c", line 131: warning #179-D: variable "lRetVal" was declared but never referenced
+"../main.c", line 133: warning #179-D: variable "pBuffer" was declared but never referenced
+"../main.c", line 135: warning #179-D: variable "fp" was declared but never referenced
+"../main.c", line 136: warning #179-D: variable "fs" was declared but never referenced
+"../main.c", line 137: warning #179-D: variable "res" was declared but never referenced
+"../main.c", line 138: warning #179-D: variable "dir" was declared but never referenced
+"../main.c", line 139: warning #179-D: variable "Size" was declared but never referenced
+'Finished building: ../main.c'
+' '
+'Building target: ProjectV3.out'
+'Invoking: ARM Linker'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me --opt_for_speed=0 -g --define=cc3200 --define=__SL__ --define=ccs --diag_wrap=off --diag_warning=225 --display_error_number -z -m"ProjectV3.map" --heap_size=0x800 --stack_size=0x800 -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" -i"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/http/client/ccs/HTTPClientMinLib" -i"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/json/ccs/Release/" --reread_libs --display_error_number --diag_wrap=off --warn_sections --xml_link_info="ProjectV3_linkInfo.xml" --rom_model -o "ProjectV3.out" "./ADXL345.obj" "./DS2401.obj" "./HMC5883.obj" "./IMU.obj" "./NMEA.obj" "./NetworkFunctions.obj" "./SimpleLinkFunctions.obj" "./diskio.obj" "./gpio_if.obj" "./i2c_if.obj" "./main.obj" "./network_common.obj" "./pinmux2.obj" "./startup_ccs.obj" "./uart_if.obj" "../cc3200v1p32.cmd"  -l"libc.a" -l"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/http_client_demo/ccs/../../../third_party/fatfs/ccs/Release/fatfs.a" -l"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/http_client_demo/ccs/../../../driverlib/ccs/Release/driverlib.a" -l"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/http_client_demo/ccs/../../../simplelink/ccs/NON_OS/simplelink.a" -lwebclient.a -ljson.a 
+<Linking>
+'Finished building target: ProjectV3.out'
+' '
+"C:/ti/ccsv6/utils/tiobj2bin/tiobj2bin" "ProjectV3.out" "ProjectV3.bin" "C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armofd" "C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armhex" "C:/ti/ccsv6/utils/tiobj2bin/mkhex4bin"
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Release for project ProjectV3 ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+gmake: Nothing to be done for `all'.
+
+**** Build Finished ****
+
+**** Build of configuration Release for project ProjectV3 ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../main.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me --opt_for_speed=0 --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/third_party/fatfs/src" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/json/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --define=cc3200 --define=__SL__ --define=ccs --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="main.pp"  "../main.c"
+"../main.c", line 251: warning #112-D: statement is unreachable
+"../main.c", line 131: warning #179-D: variable "lRetVal" was declared but never referenced
+"../main.c", line 133: warning #179-D: variable "pBuffer" was declared but never referenced
+"../main.c", line 135: warning #179-D: variable "fp" was declared but never referenced
+"../main.c", line 136: warning #179-D: variable "fs" was declared but never referenced
+"../main.c", line 137: warning #179-D: variable "res" was declared but never referenced
+"../main.c", line 138: warning #179-D: variable "dir" was declared but never referenced
+"../main.c", line 139: warning #179-D: variable "Size" was declared but never referenced
+"../main.c", line 197: warning #179-D: variable "id" was declared but never referenced
+'Finished building: ../main.c'
+' '
+'Building target: ProjectV3.out'
+'Invoking: ARM Linker'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me --opt_for_speed=0 -g --define=cc3200 --define=__SL__ --define=ccs --diag_wrap=off --diag_warning=225 --display_error_number -z -m"ProjectV3.map" --heap_size=0x800 --stack_size=0x800 -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" -i"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/http/client/ccs/HTTPClientMinLib" -i"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/json/ccs/Release/" --reread_libs --display_error_number --diag_wrap=off --warn_sections --xml_link_info="ProjectV3_linkInfo.xml" --rom_model -o "ProjectV3.out" "./ADXL345.obj" "./DS2401.obj" "./HMC5883.obj" "./IMU.obj" "./NMEA.obj" "./NetworkFunctions.obj" "./SimpleLinkFunctions.obj" "./diskio.obj" "./gpio_if.obj" "./i2c_if.obj" "./main.obj" "./network_common.obj" "./pinmux2.obj" "./startup_ccs.obj" "./uart_if.obj" "../cc3200v1p32.cmd"  -l"libc.a" -l"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/http_client_demo/ccs/../../../third_party/fatfs/ccs/Release/fatfs.a" -l"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/http_client_demo/ccs/../../../driverlib/ccs/Release/driverlib.a" -l"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/http_client_demo/ccs/../../../simplelink/ccs/NON_OS/simplelink.a" -lwebclient.a -ljson.a 
+<Linking>
+'Finished building target: ProjectV3.out'
+' '
+"C:/ti/ccsv6/utils/tiobj2bin/tiobj2bin" "ProjectV3.out" "ProjectV3.bin" "C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armofd" "C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armhex" "C:/ti/ccsv6/utils/tiobj2bin/mkhex4bin"
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Release for project ProjectV3 ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../DS2401.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me --opt_for_speed=0 --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/third_party/fatfs/src" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/json/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --define=cc3200 --define=__SL__ --define=ccs --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="DS2401.pp"  "../DS2401.c"
+'Finished building: ../DS2401.c'
+' '
+'Building target: ProjectV3.out'
+'Invoking: ARM Linker'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me --opt_for_speed=0 -g --define=cc3200 --define=__SL__ --define=ccs --diag_wrap=off --diag_warning=225 --display_error_number -z -m"ProjectV3.map" --heap_size=0x800 --stack_size=0x800 -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" -i"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/http/client/ccs/HTTPClientMinLib" -i"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/json/ccs/Release/" --reread_libs --display_error_number --diag_wrap=off --warn_sections --xml_link_info="ProjectV3_linkInfo.xml" --rom_model -o "ProjectV3.out" "./ADXL345.obj" "./DS2401.obj" "./HMC5883.obj" "./IMU.obj" "./NMEA.obj" "./NetworkFunctions.obj" "./SimpleLinkFunctions.obj" "./diskio.obj" "./gpio_if.obj" "./i2c_if.obj" "./main.obj" "./network_common.obj" "./pinmux2.obj" "./startup_ccs.obj" "./uart_if.obj" "../cc3200v1p32.cmd"  -l"libc.a" -l"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/http_client_demo/ccs/../../../third_party/fatfs/ccs/Release/fatfs.a" -l"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/http_client_demo/ccs/../../../driverlib/ccs/Release/driverlib.a" -l"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/http_client_demo/ccs/../../../simplelink/ccs/NON_OS/simplelink.a" -lwebclient.a -ljson.a 
+<Linking>
+'Finished building target: ProjectV3.out'
+' '
+"C:/ti/ccsv6/utils/tiobj2bin/tiobj2bin" "ProjectV3.out" "ProjectV3.bin" "C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armofd" "C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armhex" "C:/ti/ccsv6/utils/tiobj2bin/mkhex4bin"
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Release for project ProjectV3 ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../DS2401.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me --opt_for_speed=0 --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/third_party/fatfs/src" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/json/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --define=cc3200 --define=__SL__ --define=ccs --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="DS2401.pp"  "../DS2401.c"
+'Finished building: ../DS2401.c'
+' '
+'Building target: ProjectV3.out'
+'Invoking: ARM Linker'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me --opt_for_speed=0 -g --define=cc3200 --define=__SL__ --define=ccs --diag_wrap=off --diag_warning=225 --display_error_number -z -m"ProjectV3.map" --heap_size=0x800 --stack_size=0x800 -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" -i"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/http/client/ccs/HTTPClientMinLib" -i"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/json/ccs/Release/" --reread_libs --display_error_number --diag_wrap=off --warn_sections --xml_link_info="ProjectV3_linkInfo.xml" --rom_model -o "ProjectV3.out" "./ADXL345.obj" "./DS2401.obj" "./HMC5883.obj" "./IMU.obj" "./NMEA.obj" "./NetworkFunctions.obj" "./SimpleLinkFunctions.obj" "./diskio.obj" "./gpio_if.obj" "./i2c_if.obj" "./main.obj" "./network_common.obj" "./pinmux2.obj" "./startup_ccs.obj" "./uart_if.obj" "../cc3200v1p32.cmd"  -l"libc.a" -l"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/http_client_demo/ccs/../../../third_party/fatfs/ccs/Release/fatfs.a" -l"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/http_client_demo/ccs/../../../driverlib/ccs/Release/driverlib.a" -l"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/http_client_demo/ccs/../../../simplelink/ccs/NON_OS/simplelink.a" -lwebclient.a -ljson.a 
+<Linking>
+'Finished building target: ProjectV3.out'
+' '
+"C:/ti/ccsv6/utils/tiobj2bin/tiobj2bin" "ProjectV3.out" "ProjectV3.bin" "C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armofd" "C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armhex" "C:/ti/ccsv6/utils/tiobj2bin/mkhex4bin"
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Release for project ProjectV3 ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../main.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me --opt_for_speed=0 --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/third_party/fatfs/src" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/json/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --define=cc3200 --define=__SL__ --define=ccs --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="main.pp"  "../main.c"
+"../main.c", line 251: warning #112-D: statement is unreachable
+"../main.c", line 131: warning #179-D: variable "lRetVal" was declared but never referenced
+"../main.c", line 133: warning #179-D: variable "pBuffer" was declared but never referenced
+"../main.c", line 135: warning #179-D: variable "fp" was declared but never referenced
+"../main.c", line 136: warning #179-D: variable "fs" was declared but never referenced
+"../main.c", line 137: warning #179-D: variable "res" was declared but never referenced
+"../main.c", line 138: warning #179-D: variable "dir" was declared but never referenced
+"../main.c", line 139: warning #179-D: variable "Size" was declared but never referenced
+"../main.c", line 197: warning #179-D: variable "id" was declared but never referenced
+'Finished building: ../main.c'
+' '
+'Building target: ProjectV3.out'
+'Invoking: ARM Linker'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me --opt_for_speed=0 -g --define=cc3200 --define=__SL__ --define=ccs --diag_wrap=off --diag_warning=225 --display_error_number -z -m"ProjectV3.map" --heap_size=0x800 --stack_size=0x800 -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" -i"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/http/client/ccs/HTTPClientMinLib" -i"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/json/ccs/Release/" --reread_libs --display_error_number --diag_wrap=off --warn_sections --xml_link_info="ProjectV3_linkInfo.xml" --rom_model -o "ProjectV3.out" "./ADXL345.obj" "./DS2401.obj" "./HMC5883.obj" "./IMU.obj" "./NMEA.obj" "./NetworkFunctions.obj" "./SimpleLinkFunctions.obj" "./diskio.obj" "./gpio_if.obj" "./i2c_if.obj" "./main.obj" "./network_common.obj" "./pinmux2.obj" "./startup_ccs.obj" "./uart_if.obj" "../cc3200v1p32.cmd"  -l"libc.a" -l"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/http_client_demo/ccs/../../../third_party/fatfs/ccs/Release/fatfs.a" -l"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/http_client_demo/ccs/../../../driverlib/ccs/Release/driverlib.a" -l"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/http_client_demo/ccs/../../../simplelink/ccs/NON_OS/simplelink.a" -lwebclient.a -ljson.a 
+<Linking>
+'Finished building target: ProjectV3.out'
+' '
+"C:/ti/ccsv6/utils/tiobj2bin/tiobj2bin" "ProjectV3.out" "ProjectV3.bin" "C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armofd" "C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armhex" "C:/ti/ccsv6/utils/tiobj2bin/mkhex4bin"
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Release for project ProjectV3 ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../main.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me --opt_for_speed=0 --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/third_party/fatfs/src" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/json/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/driverlib/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/inc/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/common" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/source" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink/include" --include_path="C:/ti/CC3200SDK_1.2.0/cc3200-sdk/simplelink_extlib/provisioninglib" -g --define=cc3200 --define=__SL__ --define=ccs --diag_wrap=off --diag_warning=225 --display_error_number --preproc_with_compile --preproc_dependency="main.pp"  "../main.c"
+"../main.c", line 251: warning #112-D: statement is unreachable
+"../main.c", line 131: warning #179-D: variable "lRetVal" was declared but never referenced
+"../main.c", line 133: warning #179-D: variable "pBuffer" was declared but never referenced
+"../main.c", line 135: warning #179-D: variable "fp" was declared but never referenced
+"../main.c", line 136: warning #179-D: variable "fs" was declared but never referenced
+"../main.c", line 137: warning #179-D: variable "res" was declared but never referenced
+"../main.c", line 138: warning #179-D: variable "dir" was declared but never referenced
+"../main.c", line 139: warning #179-D: variable "Size" was declared but never referenced
+"../main.c", line 197: warning #179-D: variable "id" was declared but never referenced
+'Finished building: ../main.c'
+' '
+'Building target: ProjectV3.out'
+'Invoking: ARM Linker'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=vfplib --abi=eabi -me --opt_for_speed=0 -g --define=cc3200 --define=__SL__ --define=ccs --diag_wrap=off --diag_warning=225 --display_error_number -z -m"ProjectV3.map" --heap_size=0x800 --stack_size=0x800 -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" -i"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/http/client/ccs/HTTPClientMinLib" -i"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/netapps/json/ccs/Release/" --reread_libs --display_error_number --diag_wrap=off --warn_sections --xml_link_info="ProjectV3_linkInfo.xml" --rom_model -o "ProjectV3.out" "./ADXL345.obj" "./DS2401.obj" "./HMC5883.obj" "./IMU.obj" "./NMEA.obj" "./NetworkFunctions.obj" "./SimpleLinkFunctions.obj" "./diskio.obj" "./gpio_if.obj" "./i2c_if.obj" "./main.obj" "./network_common.obj" "./pinmux2.obj" "./startup_ccs.obj" "./uart_if.obj" "../cc3200v1p32.cmd"  -l"libc.a" -l"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/http_client_demo/ccs/../../../third_party/fatfs/ccs/Release/fatfs.a" -l"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/http_client_demo/ccs/../../../driverlib/ccs/Release/driverlib.a" -l"C:/ti/CC3200SDK_1.2.0/cc3200-sdk/example/http_client_demo/ccs/../../../simplelink/ccs/NON_OS/simplelink.a" -lwebclient.a -ljson.a 
+<Linking>
+'Finished building target: ProjectV3.out'
+' '
+"C:/ti/ccsv6/utils/tiobj2bin/tiobj2bin" "ProjectV3.out" "ProjectV3.bin" "C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armofd" "C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armhex" "C:/ti/ccsv6/utils/tiobj2bin/mkhex4bin"
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Release for project ProjectV3 ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+gmake: Nothing to be done for `all'.
+
+**** Build Finished ****
+
+**** Build of configuration Release for project ProjectV3 ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+gmake: Nothing to be done for `all'.
+
+**** Build Finished ****
+
+**** Build of configuration Release for project ProjectV3 ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+gmake: Nothing to be done for `all'.
+
+**** Build Finished ****
+
+**** Build of configuration Release for project ProjectV3 ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+gmake: Nothing to be done for `all'.
+
+**** Build Finished ****

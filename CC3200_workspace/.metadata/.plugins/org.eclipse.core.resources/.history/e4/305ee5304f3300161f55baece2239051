@@ -1,0 +1,17 @@
+/*
+ * NMEA.h
+ *
+ *  Created on: Jun 16, 2016
+ *      Author: Rafi
+ */
+
+#ifndef NMEA_H_
+#define NMEA_H_
+
+void ParseGPS (char c);
+
+extern volatile unsigned int Time, Msecs, Knots, Course, Date;
+extern volatile long Lat, Long;
+extern volatile boolean GPSFix;
+
+#endif /* NMEA_H_ */

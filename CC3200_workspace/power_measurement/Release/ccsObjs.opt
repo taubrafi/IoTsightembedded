@@ -1,0 +1,1 @@
+"./lp3p0_board.obj" "./lp3p0_plat_ops.obj" "./main.obj" "./network_common.obj" "./pinmux.obj" "./startup_ccs.obj" "./uart_if.obj" "./udma_if.obj" "./utils_if.obj" "./wdt_if.obj" "../cc3200v1p32.cmd" -l"libc.a" -ldriverlib.a -lsimplelink.a -lmiddleware.a 

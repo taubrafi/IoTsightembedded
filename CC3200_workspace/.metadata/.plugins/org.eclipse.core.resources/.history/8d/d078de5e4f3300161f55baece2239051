@@ -1,0 +1,65 @@
+/*
+ * NMEA.c
+ *
+ *  Created on: Jun 16, 2016
+ *      Author: Rafi
+ */
+
+// Example: $GPRMC,194509.000,A,4042.6142,N,07400.4168,W,2.03,221.11,160412,,,A*77
+char fmtRMC[]="$GPRMC,dddtdd.ddm,A,eeae.eeee,l,eeeae.eeee,o,djdk,ddd.dc,dddy??,,,?*??";
+
+int parseState = 0;
+unsigned int parseTemp;
+long ltmp;
+
+// GPS variables
+volatile unsigned int Time=0, Msecs=0, Knots=0, Course=0, Date=0;
+volatile long Lat=0, Long=0;
+volatile boolean GPSFix=0;
+
+void ParseGPS (char c) {
+  if (c == '$') { parseState = 0; parseTemp = 0; }
+  char mode = fmtRMC[parseState++];
+
+  if((mode=='A')&&(c=='V'))		GPSFix = 0;
+  if((mode=='A')&&(c=='A'))		GPSFix = 1;
+  if((parseState==7)&&(c==',')) GPSFix = 0;
+
+  // If received character matches format string, or format is '?' - return
+  if ((mode == c) || (mode == '?')) return;
+
+  // d=decimal digit
+  char d = c - '0';
+  if (mode == 'd') parseTemp = parseTemp*10 + d;
+
+  // e=long decimal digit
+  else if (mode == 'e') ltmp = ltmp*10 + d;
+
+  // a=angular measure
+  else if (mode == 'a') ltmp = ltmp*6 + d;
+
+  // t=Time - hhmm
+  else if (mode == 't') { Time = parseTemp*10 + d; parseTemp = 0; }
+
+  // m=Millisecs
+  else if (mode == 'm') { Msecs = parseTemp*10 + d; ltmp=0; }
+
+  // l=Latitude - in minutes*10000
+  else if (mode == 'l') { if (c == 'N') Lat = ltmp; else Lat = -ltmp; ltmp = 0; }
+
+  // o=Longitude - in minutes*10000
+  else if (mode == 'o') { if (c == 'E') Long = ltmp; else Long = -ltmp; parseTemp = 0; }
+
+   // j/k=Speed - in knots*100
+  else if (mode == 'j') { if (c != '.') { parseTemp = parseTemp*10 + d; parseState--; } }
+  else if (mode == 'k') { Knots = parseTemp*10 + d; parseTemp = 0; }
+
+  // c=Course (Track) - in degrees*100
+  else if (mode == 'c') { Course = parseTemp*10 + d; parseTemp = 0; }
+
+  // y=Date - ddmm
+  else if (mode == 'y') { Date = parseTemp*10 + d ; GPSFix = 1; }
+  else parseState = 0;
+}
+
+

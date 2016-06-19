@@ -1,0 +1,55 @@
+/*
+ * NetworkFunctions.h
+ *
+ *  Created on: Jun 16, 2016
+ *      Author: Rafi
+ */
+
+#ifndef NETWORKFUNCTIONS_H_
+#define NETWORKFUNCTIONS_H_
+
+volatile unsigned long  g_ulStatus = 0;//SimpleLink Status
+unsigned long  g_ulDestinationIP; // IP address of destination server
+unsigned long  g_ulGatewayIP = 0; //Network Gateway IP address
+unsigned char  g_ucConnectionSSID[SSID_LEN_MAX+1]; //Connection SSID
+unsigned char  g_ucConnectionBSSID[BSSID_LEN_MAX]; //Connection BSSID
+unsigned char g_buff[MAX_BUFF_SIZE+1];
+long bytesReceived = 0; // variable to store the file size
+
+
+#define APPLICATION_VERSION "1.1.1"
+#define APP_NAME            __TIME__
+
+// Application specific status/error codes
+typedef enum{
+	/* Choosing this number to avoid overlap with host-driver's error codes */
+	DEVICE_NOT_IN_STATION_MODE = -0x7D0,
+	DEVICE_START_FAILED = DEVICE_NOT_IN_STATION_MODE - 1,
+	INVALID_HEX_STRING = DEVICE_START_FAILED - 1,
+	TCP_RECV_ERROR = INVALID_HEX_STRING - 1,
+	TCP_SEND_ERROR = TCP_RECV_ERROR - 1,
+	FILE_NOT_FOUND_ERROR = TCP_SEND_ERROR - 1,
+	INVALID_SERVER_RESPONSE = FILE_NOT_FOUND_ERROR - 1,
+	FORMAT_NOT_SUPPORTED = INVALID_SERVER_RESPONSE - 1,
+	FILE_OPEN_FAILED = FORMAT_NOT_SUPPORTED - 1,
+	FILE_WRITE_ERROR = FILE_OPEN_FAILED - 1,
+	INVALID_FILE = FILE_WRITE_ERROR - 1,
+	SERVER_CONNECTION_FAILED = INVALID_FILE - 1,
+	GET_HOST_IP_FAILED = SERVER_CONNECTION_FAILED  - 1,
+
+	STATUS_CODE_MAX = -0xBB8
+}e_AppStatusCodes;
+
+
+static void InitializeAppVariables();
+static long ConfigureSimpleLinkToDefaultState();
+static long WlanConnect();
+static int FlushHTTPResponse(HTTPCli_Handle httpClient);
+int ParseJSONData(char *ptr);
+static int readResponse(HTTPCli_Handle httpClient);
+static int HTTPGetMethod(HTTPCli_Handle httpClient, char* strbuffer);
+static long ConnectToAP();
+static int ConnectToHTTPServer(HTTPCli_Handle httpClient);
+
+
+#endif /* NETWORKFUNCTIONS_H_ */
