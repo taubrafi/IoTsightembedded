@@ -83,7 +83,7 @@ int HMC5883_read_magdata(char addr, float* Xmag, float* Ymag, float* Zmag)
 {
 	unsigned char data[2];
 	unsigned char rdata[10];
-	SHORT Xdata, Ydata, Qdata, Zdata;
+	SHORT Xdata, Ydata, Zdata;
 
 	data[0] = 0x00;
 	if(I2C_IF_Write(addr, data, 1, false)<0)	return -1;

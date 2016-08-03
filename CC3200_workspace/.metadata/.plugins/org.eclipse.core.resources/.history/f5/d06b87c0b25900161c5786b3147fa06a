@@ -1,0 +1,72 @@
+/*
+ * NMEA.c
+ *
+ *  Created on: Jun 16, 2016
+ *      Author: Rafi
+ */
+
+#include "NMEA.h"
+
+
+// Example: $GPRMC,194509.000,A,4042.6142,N,07400.4168,W,2.03,221.11,160412,,,A*77
+//char fmtRMC[]="$GPRMC,dddtdd.ddm,A,eeae.eeee,l,eeeae.eeee,o,djdk,ddd.dc,dddy??,,,?*??";
+char fmtRMC[]="$GPRMC,dddtdd.dm,A,qeae.eeeee,l,qeeae.eeeee,o,?????,,dddddy,,,?*??";
+//             $GPRMC,163830.00,A,4029.87767,N,07424.85631,W,0.101,,030816,,,D*6E
+//             $GPRMC,165431.00,A,4029.88110,N,07424.85655,W,0.492,,030816,,,A*64
+int parseState = 0;
+unsigned int parseTemp;
+long ltmp;
+
+// GPS variables
+volatile unsigned int gpsTime=0, gpsMsecs=0, gpsKnots=0, gpsCourse=0, gpsDate=0;
+volatile long gpsLat=0, gpsLong=0;
+volatile char gpsFix=0;
+
+void ParseGPS (char c) {
+  if (c == '$') { parseState = 0; parseTemp = 0; ltmp=0; }
+  char mode = fmtRMC[parseState++];
+
+  if(parseState==8 && c=='V') 		gpsFix = 0;
+  //if((mode=='A')&&(c=='A'))		gpsFix = 1;
+
+  // If received character matches format string, or format is '?' - return
+  if ((mode == c) || (mode == '?')) return;
+
+  // d=decimal digit
+  char d = c - '0';
+  if (mode == 'd') parseTemp = parseTemp*10 + d;
+
+  // e=long decimal digit
+  else if (mode == 'e') ltmp = ltmp*10 + d;
+
+  // e=long decimal digit
+   else if (mode == 'q') ltmp = d;
+
+  // a=angular measure
+  else if (mode == 'a') ltmp = ltmp*10 + d;
+
+  // t=Time - hhmm
+  else if (mode == 't') { gpsTime = parseTemp*10 + d; parseTemp = 0; }
+
+  // m=Millisecs
+  else if (mode == 'm') { gpsMsecs = parseTemp*10 + d; ltmp=0; }
+
+  // l=Latitude - in minutes*10000
+  else if (mode == 'l') { if (c == 'N') gpsLat = ltmp; else gpsLat = -ltmp; ltmp = 0; }
+
+  // o=Longitude - in minutes*10000
+  else if (mode == 'o') { if (c == 'E') gpsLong = ltmp; else gpsLong = -ltmp; parseTemp = 0; }
+
+   // j/k=Speed - in knots*100
+  else if (mode == 'j') { if (c != '.') { parseTemp = parseTemp*10 + d; parseState--; } }
+  else if (mode == 'k') { gpsKnots = parseTemp*10 + d; parseTemp = 0; }
+
+  // c=Course (Track) - in degrees*100
+  else if (mode == 'c') { gpsCourse = parseTemp*10 + d; parseTemp = 0; }
+
+  // y=Date - ddmm
+  else if (mode == 'y') { gpsDate = parseTemp*10 + d ; gpsFix = 1; }
+  else parseState = 0;
+}
+
+

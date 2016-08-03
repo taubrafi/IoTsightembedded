@@ -106,6 +106,7 @@ char printing;
 void UART1_Handler(void)
 {
 	unsigned long UART_STATUS;
+	//	char stringinging[] = "$GPRMC,165431.00,A,4029.88110,N,07424.85655,W,0.492,,030816,,,A*64";
 
 	UART_STATUS = UARTIntStatus(UARTA1_BASE, true);
 	UARTIntClear(UARTA1_BASE, UART_INT_RX);
@@ -116,8 +117,10 @@ void UART1_Handler(void)
 	while((UART_STATUS & UART_INT_RX) && UARTCharsAvail(UARTA1_BASE))
 	{
 		printing = (char) UARTCharGetNonBlocking(UARTA1_BASE);
+		//	printing = stringinging[kkk++];
+		//	if(kkk>strlen(stringinging)) kkk=0;
 		ParseGPS(printing);
-			UART_PRINT(&printing);
+		//UART_PRINT(&printing);
 	}
 
 	UARTIntEnable(UARTA1_BASE, UART_INT_RX);
@@ -198,7 +201,7 @@ int main()
 
 
 	unsigned char id[6];
-
+	int kkkk;
 	/*InitializeAppVariables();
 
 	UART_PRINT("\n\r\n\rStops here on failure caused by debug!\n\r\n\r");
@@ -219,8 +222,8 @@ int main()
 
 	while(1)
 	{
-		//UART_PRINT("\33[H\33[2J");
-		GPIOPinWrite(GPIOA1_BASE, GPIO_PIN_1, 0x00); //Turn on GPS
+		UART_PRINT("\33[H\33[2J");
+		//	GPIOPinWrite(GPIOA1_BASE, GPIO_PIN_1, 0x00); //Turn on GPS
 
 		if(HMC5883_read_magdata(MAG_ADDR, &Xmag, &Ymag, &Zmag)<0) UART_PRINT("!!! mag I2c Error\n\r");
 		if(ADXL345_read_accdata(ACC_ADDR, &Xacc, &Yacc, &Zacc)<0) UART_PRINT("!!! acc I2c Error\n\r");
@@ -229,8 +232,8 @@ int main()
 		IMU_calculate(-Xacc/accMag, -Yacc/accMag, Zacc/accMag, -Xmag, -Ymag, Zmag, &roll, &pitch, &yaw); //"\33[H\33[2J"
 		sprintf(databuf,"MAG=(%5f, %5f, %5f) ACC=(%5f, %5f, %5f)\n\r(roll, pitch, yaw) = (%5f, %5f, %5f)\n\r", Xmag, Ymag, Zmag, Xacc/accMag, Yacc/accMag, Zacc/accMag, roll, pitch, yaw);
 		UART_PRINT(databuf);
-		sprintf(databuf,"Time:%d.%d\n\rSpeed:%d Direction:%d\n\rDate:%d\n\rLat:%ld Long:%ld\n\rFix:%s\n\r",
-				gpsTime, gpsMsecs, gpsKnots, gpsCourse, gpsDate, gpsLat, gpsLong, (gpsFix>0)?"Yes":"No");
+		sprintf(databuf,"Time:%d.%05d\n\rDate:%d\n\rLat:%ld Long:%ld\n\rFix:%s\n\r",
+				gpsTime, gpsMsecs, gpsDate, gpsLat, gpsLong, (gpsFix>0)?"Yes":"No");
 		UART_PRINT(databuf);
 		sprintf(databuf,"X: %f    %f\n\rY:%f    %f\n\rZ:%f    %f\n\r",
 				Xmin, Xmax, Ymin, Ymax, Zmin, Zmax);
@@ -253,6 +256,21 @@ int main()
 		}
 		UART_PRINT("HTTP Get sent to server!\n\r\n\r");
 		 */
+
+
+
+
+
+		/*	char stringinging[] = "$GPRMC,165431.00,A,4029.88110,N,07424.85655,W,0.492,,030816,,,A*64";
+		char printing111 = stringinging[kkkk++];
+		if(kkkk>strlen(stringinging)) kkkk=0;
+		ParseGPS(printing111);
+
+		sprintf(databuf,"Time:%d.%d  Date:%d Lat:%ld Long:%ld Fix:%s\n\r",
+						gpsTime, gpsMsecs, gpsDate, gpsLat, gpsLong, (gpsFix>0)?"Yes":"No");
+		UART_PRINT(databuf);
+		 */
+
 		UtilsDelay(2666667);
 	}
 

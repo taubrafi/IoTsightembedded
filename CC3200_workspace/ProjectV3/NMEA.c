@@ -9,8 +9,10 @@
 
 
 // Example: $GPRMC,194509.000,A,4042.6142,N,07400.4168,W,2.03,221.11,160412,,,A*77
-char fmtRMC[]="$GPRMC,dddtdd.ddm,A,eeae.eeee,l,eeeae.eeee,o,djdk,ddd.dc,dddy??,,,?*??";
-
+//char fmtRMC[]="$GPRMC,dddtdd.ddm,A,eeae.eeee,l,eeeae.eeee,o,djdk,ddd.dc,dddy??,,,?*??";
+char fmtRMC[]="$GPRMC,dddtdd.dm,A,qeae.eeeee,l,qeeae.eeeee,o,?????,,dddddy,,,?*??";
+//             $GPRMC,163830.00,A,4029.87767,N,07424.85631,W,0.101,,030816,,,D*6E
+//             $GPRMC,165431.00,A,4029.88110,N,07424.85655,W,0.492,,030816,,,A*64
 int parseState = 0;
 unsigned int parseTemp;
 long ltmp;
@@ -21,12 +23,11 @@ volatile long gpsLat=0, gpsLong=0;
 volatile char gpsFix=0;
 
 void ParseGPS (char c) {
-  if (c == '$') { parseState = 0; parseTemp = 0; }
+  if (c == '$') { parseState = 0; parseTemp = 0; ltmp=0; }
   char mode = fmtRMC[parseState++];
 
-  if((mode=='A')&&(c=='V'))		gpsFix = 0;
-  if((mode=='A')&&(c=='A'))		gpsFix = 1;
-  if((parseState==7)&&(c==',')) gpsFix = 0;
+  if(parseState==8 && c=='V') 		gpsFix = 0;
+  //if((mode=='A')&&(c=='A'))		gpsFix = 1;
 
   // If received character matches format string, or format is '?' - return
   if ((mode == c) || (mode == '?')) return;
@@ -38,14 +39,17 @@ void ParseGPS (char c) {
   // e=long decimal digit
   else if (mode == 'e') ltmp = ltmp*10 + d;
 
+  // e=long decimal digit
+   else if (mode == 'q') ltmp = d;
+
   // a=angular measure
-  else if (mode == 'a') ltmp = ltmp*6 + d;
+  else if (mode == 'a') ltmp = ltmp*10 + d;
 
   // t=Time - hhmm
   else if (mode == 't') { gpsTime = parseTemp*10 + d; parseTemp = 0; }
 
   // m=Millisecs
-  else if (mode == 'm') { gpsMsecs = parseTemp*10 + d; ltmp=0; }
+  else if (mode == 'm') { gpsMsecs = (parseTemp*10 + d)*10; ltmp=0; }
 
   // l=Latitude - in minutes*10000
   else if (mode == 'l') { if (c == 'N') gpsLat = ltmp; else gpsLat = -ltmp; ltmp = 0; }

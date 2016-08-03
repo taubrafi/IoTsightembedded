@@ -14,4 +14,8 @@ extern volatile unsigned int gpsTime, gpsMsecs, gpsKnots, gpsCourse, gpsDate;
 extern volatile long gpsLat, gpsLong;
 extern volatile char gpsFix;
 
+extern int parseState;
+extern unsigned int parseTemp;
+extern long ltmp;
+
 #endif /* NMEA_H_ */
