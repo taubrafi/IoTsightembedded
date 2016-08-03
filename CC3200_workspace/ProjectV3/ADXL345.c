@@ -19,6 +19,7 @@
 #include "hw_i2c.h"
 #include "i2c_if.h"
 #include "utils.h"
+#include "ADXL345.h"
 
 int init_ADXL345(char addr)
 {

@@ -181,7 +181,6 @@ int main()
 	}
 	 */
 
-
 	init_HMC5883(MAG_ADDR, true);
 	init_ADXL345(ACC_ADDR);
 
@@ -194,6 +193,10 @@ int main()
 	float Xacc=-1, Yacc=-1, Zacc=-1;
 	double roll=-1, pitch=-1, yaw=-1;
 	float accMag=-1;
+
+	float pressure;
+
+
 	unsigned char id[6];
 
 	/*InitializeAppVariables();
@@ -216,7 +219,9 @@ int main()
 
 	while(1)
 	{
-	//	UART_PRINT("\33[H\33[2J");
+		//UART_PRINT("\33[H\33[2J");
+		GPIOPinWrite(GPIOA1_BASE, GPIO_PIN_1, 0x00); //Turn on GPS
+
 		if(HMC5883_read_magdata(MAG_ADDR, &Xmag, &Ymag, &Zmag)<0) UART_PRINT("!!! mag I2c Error\n\r");
 		if(ADXL345_read_accdata(ACC_ADDR, &Xacc, &Yacc, &Zacc)<0) UART_PRINT("!!! acc I2c Error\n\r");
 		accMag = sqrt(Xacc*Xacc + Yacc*Yacc + Zacc*Zacc);
@@ -224,8 +229,8 @@ int main()
 		IMU_calculate(-Xacc/accMag, -Yacc/accMag, Zacc/accMag, -Xmag, -Ymag, Zmag, &roll, &pitch, &yaw); //"\33[H\33[2J"
 		sprintf(databuf,"MAG=(%5f, %5f, %5f) ACC=(%5f, %5f, %5f)\n\r(roll, pitch, yaw) = (%5f, %5f, %5f)\n\r", Xmag, Ymag, Zmag, Xacc/accMag, Yacc/accMag, Zacc/accMag, roll, pitch, yaw);
 		UART_PRINT(databuf);
-		sprintf(databuf,"Time:%d.%d\n\rSpeed:%d Direction:%d\n\rDate:%d\n\rLat:%ld Long:%ld\n\rFix:%d\n\r",
-				gpsTime, gpsMsecs, gpsKnots, gpsCourse, gpsDate, gpsLat, gpsLong, gpsFix);
+		sprintf(databuf,"Time:%d.%d\n\rSpeed:%d Direction:%d\n\rDate:%d\n\rLat:%ld Long:%ld\n\rFix:%s\n\r",
+				gpsTime, gpsMsecs, gpsKnots, gpsCourse, gpsDate, gpsLat, gpsLong, (gpsFix>0)?"Yes":"No");
 		UART_PRINT(databuf);
 		sprintf(databuf,"X: %f    %f\n\rY:%f    %f\n\rZ:%f    %f\n\r",
 				Xmin, Xmax, Ymin, Ymax, Zmin, Zmax);
@@ -234,6 +239,9 @@ int main()
 		sprintf(databuf,"ID=%lld\n\r", ds2401_get_id_long());
 		UART_PRINT(databuf);
 
+		if(MPL115A2_get_pressure(&pressure)<0) UART_PRINT("!!! bar I2c Error\n\r");
+		sprintf(pBuffer,"pressure=%fkPa\n\r", pressure);
+		UART_PRINT(pBuffer);
 
 
 		sprintf(strbuffer,"/shots/get/12345/%d/%d/0/%d", (int)roll, (int)pitch, (int)yaw);

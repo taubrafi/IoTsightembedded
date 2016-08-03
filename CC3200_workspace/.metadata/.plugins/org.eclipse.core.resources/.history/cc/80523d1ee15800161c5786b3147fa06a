@@ -1,0 +1,67 @@
+/*
+ * MPL115A2.c
+ *
+ *  Created on: Aug 2, 2016
+ *      Author: Rafi
+ */
+
+
+
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include <math.h>
+#include <integer.h>
+
+#include "i2c.h"
+#include "hw_memmap.h"
+#include "hw_i2c.h"
+#include "i2c_if.h"
+#include "utils.h"
+#include "MPL115A2.h"
+
+
+
+
+int MPL115A2_get_pressure(float* pressure)
+{
+	unsigned char data[2];
+	unsigned char rdata[12];
+
+
+	data[0] = 0x12;
+	data[1] = 0x00;
+	if(I2C_IF_Write(MPL115A2_ADDR, data, 2, false)<0)	return -1;
+	while(I2CMasterBusy(I2CA0_BASE)){}
+
+	data[0] = 0x00;
+	if(I2C_IF_Write(MPL115A2_ADDR, data, 1, false)<0)	return -2;
+	while(I2CMasterBusy(I2CA0_BASE)){}
+
+	if(I2C_IF_Read(MPL115A2_ADDR, rdata, 12)<0)			return -3;
+	while(I2CMasterBusy(I2CA0_BASE)){}
+
+
+	/*
+
+	Xdata = (int)rdata[1];
+	Xdata <<=8;
+	Xdata += (int)rdata[0];
+
+	Ydata = (int)rdata[3];
+	Ydata <<=8;
+	Ydata += (int)rdata[2];
+
+	Zdata = (int)rdata[5];
+	Zdata <<=8;
+	Zdata += (int)rdata[4];
+
+	*Xacc = Xdata;
+	*Yacc = Ydata;
+	*Zacc = Zdata;
+	*/
+
+	return 0;
+}
