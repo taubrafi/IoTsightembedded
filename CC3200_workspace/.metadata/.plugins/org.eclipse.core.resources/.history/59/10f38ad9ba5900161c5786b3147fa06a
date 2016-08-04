@@ -1,0 +1,296 @@
+//*****************************************************************************
+// Copyright (C) 2014 Texas Instruments Incorporated
+//
+// All rights reserved. Property of Texas Instruments Incorporated.
+// Restricted rights to use, duplicate or disclose this code are
+// granted through contract.
+// The program may not be used without the written permission of
+// Texas Instruments Incorporated or against the terms and conditions
+// stipulated in the agreement under which this program has been supplied,
+// and under no circumstances can it be used with non-TI connectivity device.
+//
+//*****************************************************************************
+
+
+//*****************************************************************************
+//
+// Application Name     - HTTP Client Demo
+// Application Overview - This sample application demonstrates how to use
+//                          HTTP Client (In Minimum mode) API for HTTP based
+//                          application development.
+//                          This application explain user to how to:
+//                          1. Connect to an access point
+//                          2. Connect to a HTTP Server with and without proxy
+//                          3. Do POST, GET, PUT and DELETE
+//                          4. Parse JSON data using “Jasmine JSON Parser”
+// Note: To use HTTP Client in minimum mode, user need to compile library (webclient)
+// 			with HTTPCli_LIBTYPE_MIN option.
+//
+// 			HTTP Client (minimal) library supports synchronous mode, redirection
+// 			handling, chunked transfer encoding support, proxy support and TLS
+// 			support (for SimpleLink Only. TLS on other platforms are disabled)
+//
+// 			HTTP Client (Full) library supports all the features of the minimal
+// 			library + asynchronous mode and content handling support +
+// 			TLS support (all platforms). To use HTTP Client in full mode user need
+//			to compile library (webclient) with HTTPCli_LIBTYPE_MIN option. For full
+//			mode RTOS is needed.
+//
+// Application Details  -
+// http://processors.wiki.ti.com/index.php/
+// or
+// docs\examples\
+//
+//*****************************************************************************
+
+
+#include "includes.h"
+
+
+
+//*****************************************************************************
+//                 GLOBAL VARIABLES -- Start
+//*****************************************************************************
+
+#if defined(ccs) || defined(gcc)
+extern void (* const g_pfnVectors[])(void);
+#endif
+#if defined(ewarm)
+extern uVectorEntry __vector_table;
+#endif
+
+
+//*****************************************************************************
+//
+//! Application startup display on UART
+//!
+//! \param  none
+//!
+//! \return none
+//!
+//*****************************************************************************
+static void
+DisplayBanner(char * AppName)
+{
+	UART_PRINT("\n\n\n\r");
+	UART_PRINT("\t\t *************************************************\n\r");
+	UART_PRINT("\t\t      CC3200 %s Application       \n\r", AppName);
+	UART_PRINT("\t\t *************************************************\n\r");
+	UART_PRINT("\n\n\n\r");
+}
+
+
+//*****************************************************************************
+//
+//! Board Initialization & Configuration
+//!
+//! \param  None
+//!
+//! \return None
+//
+//*****************************************************************************
+static void
+BoardInit(void)
+{
+
+	IntVTableBaseSet((unsigned long)&g_pfnVectors[0]);
+
+	IntMasterEnable();
+	IntEnable(FAULT_SYSTICK);
+
+	PRCMCC3200MCUInit();
+}
+
+char printing;
+
+void UART1_Handler(void)
+{
+	unsigned long UART_STATUS;
+	//	char stringinging[] = "$GPRMC,165431.00,A,4029.88110,N,07424.85655,W,0.492,,030816,,,A*64";
+
+	UART_STATUS = UARTIntStatus(UARTA1_BASE, true);
+	UARTIntClear(UARTA1_BASE, UART_INT_RX);
+	UARTIntDisable(UARTA1_BASE, UART_INT_RX);
+
+
+
+	while((UART_STATUS & UART_INT_RX) && UARTCharsAvail(UARTA1_BASE))
+	{
+		printing = (char) UARTCharGetNonBlocking(UARTA1_BASE);
+		//	printing = stringinging[kkk++];
+		//	if(kkk>strlen(stringinging)) kkk=0;
+		ParseGPS(printing);
+		//UART_PRINT(&printing);
+	}
+
+	UARTIntEnable(UARTA1_BASE, UART_INT_RX);
+}
+
+
+
+
+int main()
+{
+	long lRetVal = -1;
+	HTTPCli_Struct httpClient;
+	char pBuffer[100];
+
+	FIL fp;
+	FATFS fs;
+	FRESULT res;
+	DIR dir;
+	UINT Size;
+
+	BoardInit();
+	PinMuxConfig();
+
+	InitTerm();
+	//
+	// Clearing the Terminal.
+	//
+	ClearTerm();
+	//GPIO_IF_LedConfigure(LED1|LED2|LED3);
+	DisplayBanner(APP_NAME);
+
+	//
+	// Enable MMCHS
+	//
+	PRCMPeripheralClkEnable(PRCM_SDHOST,PRCM_RUN_MODE_CLK);
+
+	//
+	// Reset MMCHS
+	//
+	PRCMPeripheralReset(PRCM_SDHOST);
+
+	//
+	// Configure MMCHS
+	//
+	SDHostInit(SDHOST_BASE);
+
+	//
+	// Configure card clock
+	//
+	SDHostSetExpClk(SDHOST_BASE, PRCMPeripheralClockGet(PRCM_SDHOST), 15000000);
+
+
+	res = f_mount(&fs,"0",1);
+	if(res!=FR_OK)	UART_PRINT("Mount error!");
+
+	res = f_opendir(&dir,"/");
+	if(res!=FR_OK)	UART_PRINT("Opendir error!\n");
+
+	res = f_open(&fp,SYSFILE,FA_CREATE_ALWAYS|FA_READ|FA_WRITE);
+	if(res!=FR_OK)	UART_PRINT("Open error!\n");
+
+	if(res == FR_OK)
+	{
+		res = f_write(&fp,SYSTEXT,sizeof(SYSTEXT),&Size);
+		if(res!=FR_OK)	UART_PRINT("Write error!\n");
+
+		Report("Wrote : %d Bytes\n\r",Size);
+		res = f_close(&fp);
+	}
+
+	UtilsDelay(2666667);
+	UtilsDelay(2666667);
+	UtilsDelay(2666667);
+	UtilsDelay(2666667);
+	UtilsDelay(2666667);
+	UtilsDelay(2666667);
+
+
+	init_HMC5883(MAG_ADDR, true);
+	init_ADXL345(ACC_ADDR);
+
+	GPIOPinWrite(GPIOA1_BASE, GPIO_PIN_1, 0x00); //Turn on GPS
+
+	char databuf[100];
+	char strbuffer[100];
+
+	float Xmag=-1, Ymag=-1, Zmag=-1;
+	float Xacc=-1, Yacc=-1, Zacc=-1;
+	double roll=-1, pitch=-1, yaw=-1;
+	float accMag=-1;
+
+	float pressure;
+
+	//int kkkk;
+	/*InitializeAppVariables();
+
+	UART_PRINT("\n\r\n\rStops here on failure caused by debug!\n\r\n\r");
+	lRetVal = ConnectToAP();
+
+	if(lRetVal < 0)
+	{
+		LOOP_FOREVER();
+	}
+
+	lRetVal = ConnectToHTTPServer(&httpClient);
+	if(lRetVal < 0)
+	{
+		LOOP_FOREVER();
+	}
+	UART_PRINT("Connected to server!\n\r\n\r");
+	 */
+
+	while(1)
+	{
+		UART_PRINT("\33[H\33[2J");
+		//	GPIOPinWrite(GPIOA1_BASE, GPIO_PIN_1, 0x00); //Turn on GPS
+
+		if(HMC5883_read_magdata(MAG_ADDR, &Xmag, &Ymag, &Zmag)<0) UART_PRINT("!!! mag I2c Error\n\r");
+		if(ADXL345_read_accdata(ACC_ADDR, &Xacc, &Yacc, &Zacc)<0) UART_PRINT("!!! acc I2c Error\n\r");
+		accMag = sqrt(Xacc*Xacc + Yacc*Yacc + Zacc*Zacc);
+
+		IMU_calculate(-Xacc/accMag, -Yacc/accMag, Zacc/accMag, -Xmag, -Ymag, Zmag, &roll, &pitch, &yaw); //"\33[H\33[2J"
+		sprintf(databuf,"MAG=(%5f, %5f, %5f) ACC=(%5f, %5f, %5f)\n\r(roll, pitch, yaw) = (%5f, %5f, %5f)\n\r", Xmag, Ymag, Zmag, Xacc/accMag, Yacc/accMag, Zacc/accMag, roll, pitch, yaw);
+		UART_PRINT(databuf);
+		sprintf(databuf,"Time:%d.%05d\n\rDate:%d\n\rLat:%ld Long:%ld\n\rFix:%s\n\r",
+				gpsTime, gpsMsecs, gpsDate, gpsLat, gpsLong, (gpsFix>0)?"Yes":"No");
+		UART_PRINT(databuf);
+		sprintf(databuf,"X: %f    %f\n\rY:%f    %f\n\rZ:%f    %f\n\r",
+				Xmin, Xmax, Ymin, Ymax, Zmin, Zmax);
+		UART_PRINT(databuf);
+
+		sprintf(databuf,"ID=%lld\n\r", ds2401_get_id_long());
+		UART_PRINT(databuf);
+
+		if(MPL115A2_get_pressure(&pressure)<0) UART_PRINT("!!! bar I2c Error\n\r");
+		sprintf(pBuffer,"pressure=%fkPa\n\r", pressure);
+		UART_PRINT(pBuffer);
+
+
+		sprintf(strbuffer,"/shots/get/12345/%d/%d/0/%d", (int)roll, (int)pitch, (int)yaw);
+
+		/*lRetVal = HTTPGetMethod(&httpClient, strbuffer);
+		if(lRetVal < 0)
+		{
+			UART_PRINT("HTTP Post Get failed.\n\r");
+		}
+		UART_PRINT("HTTP Get sent to server!\n\r\n\r");
+		 */
+
+
+
+
+
+		/*	char stringinging[] = "$GPRMC,165431.00,A,4029.88110,N,07424.85655,W,0.492,,030816,,,A*64";
+		char printing111 = stringinging[kkkk++];
+		if(kkkk>strlen(stringinging)) kkkk=0;
+		ParseGPS(printing111);
+
+		sprintf(databuf,"Time:%d.%d  Date:%d Lat:%ld Long:%ld Fix:%s\n\r",
+						gpsTime, gpsMsecs, gpsDate, gpsLat, gpsLong, (gpsFix>0)?"Yes":"No");
+		UART_PRINT(databuf);
+		 */
+
+		UtilsDelay(2666667);
+	}
+
+	HTTPCli_disconnect(&httpClient);
+	sl_WlanDisconnect();
+	UART_PRINT("Connection closed.\n\r");
+	//LOOP_FOREVER();
+	return 0;
+}
+

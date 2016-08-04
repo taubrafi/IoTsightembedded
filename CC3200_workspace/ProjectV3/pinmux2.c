@@ -81,6 +81,9 @@ void PinMuxConfig(void)
 	//Onewire pin
 	GPIODirModeSet(GPIOA0_BASE, GPIO_PIN_5, GPIO_DIR_MODE_OUT);
 
+	//SD_CS
+	GPIODirModeSet(GPIOA1_BASE, GPIO_PIN_6, GPIO_DIR_MODE_OUT);
+
 	//
 	// Enable Peripheral Clocks
 	//
@@ -108,7 +111,20 @@ void PinMuxConfig(void)
 	PinTypeSDHost(PIN_02, PIN_MODE_6);
 
 
+	//
+	// Set the SD card clock as output pin
+	//
+	MAP_PinDirModeSet(PIN_01,PIN_DIR_MODE_OUT);
 
+	//
+	// Enable Pull up on data
+	//
+	MAP_PinConfigSet(PIN_06,PIN_STRENGTH_4MA, PIN_TYPE_STD_PU);
+
+	//
+	// Enable Pull up on CMD
+	//
+	MAP_PinConfigSet(PIN_02,PIN_STRENGTH_4MA, PIN_TYPE_STD_PU);
 
 
 	//

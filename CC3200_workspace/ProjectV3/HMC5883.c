@@ -34,7 +34,7 @@ int init_HMC5883(char addr, char cal)
 	{
 		data[0] = 0x00;
 		data[1] =  0x71;
-		data[2] =  0xA0;
+		data[2] =  0xA0;//0xA0
 		data[3] =  0x00;
 		if(I2C_IF_Write(addr, data, 4, true) < 0) 	return -1;
 		UtilsDelay(2000000); //75ms delay
@@ -68,7 +68,7 @@ int init_HMC5883(char addr, char cal)
 
 	data[0] = 0x00;
 	data[1] =  0x70;
-	data[2] =  0xA0;
+	data[2] =  0xA0;//A0
 	data[3] =  0x00;
 	if(I2C_IF_Write(addr, data, 4, true) < 0)	return -4;
 	while(I2CMasterBusy(I2CA0_BASE)){}
@@ -127,6 +127,8 @@ int HMC5883_read_magdata(char addr, float* Xmag, float* Ymag, float* Zmag)
 	*Xmag /= Xmcal;
 	*Ymag /= Ymcal;
 	*Zmag /= Zmcal;
+
+	*Zmag = 0; //Due to issue with Z-axis
 
 	return 0;
 }
