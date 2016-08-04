@@ -11,4 +11,6 @@
 int ds2401_get_number(unsigned char id[6]);
 uint64_t ds2401_get_id_long(void);
 
+void init_ds2401(void);
+
 #endif /* ONEWIRE_H_ */

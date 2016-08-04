@@ -108,6 +108,8 @@ typedef enum{
 #include "NMEA.h"
 #include "DS2401.h"
 #include "MPL115A2.h"
+#include "SD_card.h"
+#include "GPS.h"
 
 
 

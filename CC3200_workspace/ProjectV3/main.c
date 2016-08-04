@@ -135,11 +135,7 @@ int main()
 	HTTPCli_Struct httpClient;
 	char pBuffer[100];
 
-	FIL fp;
-	FATFS fs;
-	FRESULT res;
-	DIR dir;
-	UINT Size;
+
 
 	BoardInit();
 	PinMuxConfig();
@@ -152,67 +148,18 @@ int main()
 	//GPIO_IF_LedConfigure(LED1|LED2|LED3);
 	DisplayBanner(APP_NAME);
 
-	//
-	// Enable MMCHS
-	//
-	PRCMPeripheralClkEnable(PRCM_SDHOST, PRCM_RUN_MODE_CLK);
-
-	//
-	// Reset MMCHS
-	//
-	PRCMPeripheralReset(PRCM_SDHOST);
-
-	//
-	// Configure MMCHS
-	//
-	SDHostInit(SDHOST_BASE);
-
-	//
-	// Configure card clock
-	//
-	SDHostSetExpClk(SDHOST_BASE, PRCMPeripheralClockGet(PRCM_SDHOST), 15000000);
-
-	char databuf[100];
-
-	GPIOPinWrite(GPIOA1_BASE, GPIO_PIN_6, 0x00); //Turn on SD
-
-	res = f_mount(&fs,"0",1);
-	if(res!=FR_OK)	UART_PRINT("Mount error!");
-	sprintf(databuf,"  res=%d\n\r", res);
-	UART_PRINT(databuf);
-
-	res = f_opendir(&dir,"/");
-	if(res!=FR_OK)	UART_PRINT("Opendir error!\n\r");
-
-	res = f_open(&fp,SYSFILE,FA_CREATE_ALWAYS|FA_READ|FA_WRITE);
-	if(res!=FR_OK)	UART_PRINT("Open error!\n\r");
-
-	if(res == FR_OK)
-	{
-		res = f_write(&fp,SYSTEXT,sizeof(SYSTEXT),&Size);
-		if(res!=FR_OK)	UART_PRINT("Write error!\n\r");
-
-		Report("Wrote : %d Bytes\n\r",Size);
-		res = f_close(&fp);
-	}
-	GPIOPinWrite(GPIOA1_BASE, GPIO_PIN_6, 0xFF); //Turn off SD
-
-
-	UtilsDelay(2666667);
-	UtilsDelay(2666667);
-	UtilsDelay(2666667);
-	UtilsDelay(2666667);
-	UtilsDelay(2666667);
-	UtilsDelay(2666667);
-
-
 	init_HMC5883(MAG_ADDR, true);
 	init_ADXL345(ACC_ADDR);
+	init_MPL115A2();
+	init_ds2401();
+	init_SD_card();
 
-	GPIOPinWrite(GPIOA1_BASE, GPIO_PIN_1, 0x00); //Turn on GPS
+	GPS_on();
 
+	SD_write_file("hello.txt", "my name is", strlen("my name is"), SD_CREATE_AND_DELETE);
 
 	char strbuffer[100];
+	char databuf[100];
 
 	float Xmag=-1, Ymag=-1, Zmag=-1;
 	float Xacc=-1, Yacc=-1, Zacc=-1;
@@ -243,18 +190,19 @@ int main()
 	while(1)
 	{
 		UART_PRINT("\33[H\33[2J");
-		//	GPIOPinWrite(GPIOA1_BASE, GPIO_PIN_1, 0x00); //Turn on GPS
 
 		if(HMC5883_read_magdata(MAG_ADDR, &Xmag, &Ymag, &Zmag)<0) UART_PRINT("!!! mag I2c Error\n\r");
 		if(ADXL345_read_accdata(ACC_ADDR, &Xacc, &Yacc, &Zacc)<0) UART_PRINT("!!! acc I2c Error\n\r");
 		accMag = sqrt(Xacc*Xacc + Yacc*Yacc + Zacc*Zacc);
 
-		IMU_calculate(-Xacc/accMag, -Yacc/accMag, Zacc/accMag, -Xmag, -Ymag, Zmag, &roll, &pitch, &yaw); //"\33[H\33[2J"
+		IMU_calculate(-Xacc/accMag, -Yacc/accMag, Zacc/accMag, -Xmag, -Ymag, Zmag, &roll, &pitch, &yaw);
 		sprintf(databuf,"MAG=(%5f, %5f, %5f) ACC=(%5f, %5f, %5f)\n\r(roll, pitch, yaw) = (%5f, %5f, %5f)\n\r", Xmag, Ymag, Zmag, Xacc/accMag, Yacc/accMag, Zacc/accMag, roll, pitch, yaw);
 		UART_PRINT(databuf);
+
 		sprintf(databuf,"Time:%d.%05d\n\rDate:%d\n\rLat:%ld Long:%ld\n\rFix:%s\n\r",
 				gpsTime, gpsMsecs, gpsDate, gpsLat, gpsLong, (gpsFix>0)?"Yes":"No");
 		UART_PRINT(databuf);
+
 		sprintf(databuf,"X: %f    %f\n\rY:%f    %f\n\rZ:%f    %f\n\r",
 				Xmin, Xmax, Ymin, Ymax, Zmin, Zmax);
 		UART_PRINT(databuf);
@@ -266,29 +214,14 @@ int main()
 		sprintf(pBuffer,"pressure=%fkPa\n\r", pressure);
 		UART_PRINT(pBuffer);
 
-
+		/*
 		sprintf(strbuffer,"/shots/get/12345/%d/%d/0/%d", (int)roll, (int)pitch, (int)yaw);
-
-		/*lRetVal = HTTPGetMethod(&httpClient, strbuffer);
+		lRetVal = HTTPGetMethod(&httpClient, strbuffer);
 		if(lRetVal < 0)
 		{
 			UART_PRINT("HTTP Post Get failed.\n\r");
 		}
 		UART_PRINT("HTTP Get sent to server!\n\r\n\r");
-		 */
-
-
-
-
-
-		/*	char stringinging[] = "$GPRMC,165431.00,A,4029.88110,N,07424.85655,W,0.492,,030816,,,A*64";
-		char printing111 = stringinging[kkkk++];
-		if(kkkk>strlen(stringinging)) kkkk=0;
-		ParseGPS(printing111);
-
-		sprintf(databuf,"Time:%d.%d  Date:%d Lat:%ld Long:%ld Fix:%s\n\r",
-						gpsTime, gpsMsecs, gpsDate, gpsLat, gpsLong, (gpsFix>0)?"Yes":"No");
-		UART_PRINT(databuf);
 		 */
 
 		UtilsDelay(2666667);

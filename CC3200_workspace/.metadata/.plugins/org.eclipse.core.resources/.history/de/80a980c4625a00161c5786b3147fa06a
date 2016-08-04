@@ -1,0 +1,13 @@
+/*
+ * SD_card.c
+ *
+ *  Created on: Aug 4, 2016
+ *      Author: Rafi
+ */
+
+#include "SD_card.h"
+
+void init_SD_card(void)
+{
+
+}

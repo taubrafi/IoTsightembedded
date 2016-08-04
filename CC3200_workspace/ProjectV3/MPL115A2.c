@@ -25,7 +25,10 @@
 #include "includes.h"
 
 
-
+void init_MPL115A2(void)
+{
+	//nothing to do
+}
 
 int MPL115A2_get_pressure(float* pressure)
 {

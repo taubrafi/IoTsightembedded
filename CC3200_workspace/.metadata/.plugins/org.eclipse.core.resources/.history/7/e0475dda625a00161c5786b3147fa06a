@@ -1,0 +1,31 @@
+/*
+ * SD_card.c
+ *
+ *  Created on: Aug 4, 2016
+ *      Author: Rafi
+ */
+
+#include "SD_card.h"
+
+void init_SD_card(void)
+{
+	//
+	// Enable MMCHS
+	//
+	PRCMPeripheralClkEnable(PRCM_SDHOST, PRCM_RUN_MODE_CLK);
+
+	//
+	// Reset MMCHS
+	//
+	PRCMPeripheralReset(PRCM_SDHOST);
+
+	//
+	// Configure MMCHS
+	//
+	SDHostInit(SDHOST_BASE);
+
+	//
+	// Configure card clock
+	//
+	SDHostSetExpClk(SDHOST_BASE, PRCMPeripheralClockGet(PRCM_SDHOST), 15000000);
+}

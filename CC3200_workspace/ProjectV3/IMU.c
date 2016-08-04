@@ -11,6 +11,8 @@
 #include <stdbool.h>
 #include <math.h>
 #include <integer.h>
+#include "IMU.h"
+
 
 
 float Vx = 0;

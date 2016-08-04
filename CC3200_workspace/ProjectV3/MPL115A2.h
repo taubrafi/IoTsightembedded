@@ -12,6 +12,6 @@
 
 int MPL115A2_get_pressure(float* pressure);
 
-
+void init_MPL115A2(void);
 
 #endif /* MPL115A2_H_ */

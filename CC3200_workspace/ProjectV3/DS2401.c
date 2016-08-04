@@ -6,6 +6,7 @@
  */
 
 #include "includes.h"
+#include "DS2401.h"
 
 #define DS2401_CMD_READ_ROM 0x33
 #define __OPTIMIZE__
@@ -220,6 +221,11 @@ void ds2401_init(void)
 	 return result;
  }
 
+
+ void init_ds2401(void)
+ {
+	 ds2401_init();
+ }
  /*
 int do_ds2401( int flag, int argc, char *argv[])
 {
