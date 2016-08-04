@@ -24,12 +24,26 @@
 
 #include "includes.h"
 
+/*
+int NNN = 16;
+int pres_index = 0;
+
+float pres_data[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+*/
 
 void init_MPL115A2(void)
 {
-	//nothing to do
+	/*
+	float datanull;
+	int ij;
+	for(ij=0; ij<NNN; ij++)
+	{
+		int k = MPL115A2_get_pressure(&datanull);
+	}
+	 */
 }
 
+//int MPL115A2_get_pressure_single(float* pressure)
 int MPL115A2_get_pressure(float* pressure)
 {
 	unsigned char data[2];
@@ -68,18 +82,68 @@ int MPL115A2_get_pressure(float* pressure)
 	double Pcomp = a0 + (b1+c12*Tadc)*Padc + b2*Tadc;
 
 	*pressure = 50 + Pcomp*(115-50)/1023;
-/*
-	char buffer[1000];
-	sprintf(buffer,"Padc=%d Tadc=%d a0=%f b1=%f b2=%f c12=%f Pcomp=%f\n\r", Padc, Tadc, a0, b1, b2, c12, Pcomp);
-	UART_PRINT(buffer);
-	int i;
-	for (i=0;i<12;i++)
-	{
-		sprintf(buffer," %x ", rdata[i]);
-		UART_PRINT(buffer);
-	}
-	UART_PRINT("\r\n");
-*/
+
 	if (*pressure<49 || *pressure>116) return -10;
 	return 0;
 }
+/*
+int MPL115A2_get_pressure(float* pressure)
+{
+	int res;
+	float new_data;
+	res = MPL115A2_get_pressure(&new_data);
+	if(res!=0) return res;
+
+	pres_index++;
+
+	if(pres_index>=NNN) pres_index=0;
+	pres_data[pres_index] = new_data;
+
+ *pressure = 0;
+	int ij;
+	for(ij=0; ij<NNN; ij++)
+	{
+ *pressure = pres_data[ij] / NNN;
+	}
+	return 0;
+}
+
+ */
+int MPL115A2_get_pressure_avg(float* pressure, int num) //num<=100
+{
+	int res;
+	float new_data;
+	int NNN = num;
+	float pres_data[100];
+	int ij;
+
+	for(ij=0; ij<NNN; ij++)
+	{
+		res = MPL115A2_get_pressure(&new_data);
+		if(res!=0) return res;
+		pres_data[ij] = new_data;
+	}
+
+	*pressure = 0;
+
+	for(ij=0; ij<NNN; ij++)
+	{
+		*pressure += pres_data[ij] / NNN;
+	}
+
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
